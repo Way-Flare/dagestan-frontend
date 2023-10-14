@@ -1,6 +1,6 @@
 
 function App() {
-  return<></>
+  return<p>Привет мир</p>
 }
 
 export default App
