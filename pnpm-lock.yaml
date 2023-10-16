@@ -10,9 +10,6 @@ dependencies:
   antd:
     specifier: ^5.10.1
     version: 5.10.1(react-dom@18.2.0)(react@18.2.0)
-  husky:
-    specifier: ^8.0.3
-    version: 8.0.3
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -69,6 +66,9 @@ devDependencies:
   eslint-plugin-react-refresh:
     specifier: ^0.4.3
     version: 0.4.3(eslint@8.22.0)
+  husky:
+    specifier: ^8.0.3
+    version: 8.0.3
   prettier:
     specifier: ^3.0.3
     version: 3.0.3
@@ -2182,7 +2182,7 @@ packages:
     resolution: {integrity: sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==}
     engines: {node: '>=14'}
     hasBin: true
-    dev: false
+    dev: true
 
   /ignore@5.2.4:
     resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}
