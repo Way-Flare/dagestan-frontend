@@ -1,13 +1,13 @@
-import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query"
 
 export const apiSlice = createApi({
-    reducerPath: 'api',
-    baseQuery: fetchBaseQuery({baseUrl: '/fakeApi'}),
-    endpoints: builder => ({
-        getPosts: builder.query({
-            query: () => '/posts'
-        })
-    })
+  reducerPath: "api",
+  baseQuery: fetchBaseQuery({ baseUrl: "/fakeApi" }),
+  endpoints: (builder) => ({
+    getPosts: builder.query({
+      query: () => "/posts",
+    }),
+  }),
 })
 
-export const {useGetPostsQuery} = apiSlice
+export const { useGetPostsQuery } = apiSlice
