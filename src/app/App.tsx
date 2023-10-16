@@ -1,9 +1,9 @@
 function App() {
-
-    return (
-        <p>Салам дагестан
-        </p>
-    )
+  return (
+    <>
+      <p>Салам дагестан</p>
+    </>
+  )
 }
 
 export default App
