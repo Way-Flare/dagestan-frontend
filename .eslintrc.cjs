@@ -40,12 +40,9 @@ module.exports = {
   "rules": {
     "typescript-eslint/ban-ts-commit": "off",
     "typescript-eslint/ban-types": "off",
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto"
-      }
-    ],
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "import/no-unresolved": "off",
+    "no-unused-vars": "off",
+    "semi": [2, "never"]
   }
 }
