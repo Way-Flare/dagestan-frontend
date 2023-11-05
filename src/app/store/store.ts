@@ -1,14 +1,9 @@
-import { configureStore, combineReducer } from "@reduxjs/toolkit"
+import { configureStore } from "@reduxjs/toolkit"
 import { apiSlice } from "src/shared/api/defaultApi"
-
-const rootReducer = combineReducer({
-  [apiSlice.reducerPath]: apiSlice.reducer
-})
+import { rootReducer } from "src/app/store/rootReducer"
 
 export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(apiSlice.middleware)
+    getDefaultMiddleware().concat(apiSlice.middleware),
 })
-
-export type RootState = ReturnType<typeof store.getState>;
