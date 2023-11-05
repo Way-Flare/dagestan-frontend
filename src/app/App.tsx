@@ -1,9 +1,13 @@
+import "./index.scss"
+import { withProviders } from "src/app/providers/withProviders"
+import { Routing } from "src/app/providers/Routing"
+
 function App() {
   return (
     <>
-      <p>Салам дагестан</p>
+      <Routing />
     </>
-  );
+  )
 }
 
-export default App;
+export default withProviders(App)

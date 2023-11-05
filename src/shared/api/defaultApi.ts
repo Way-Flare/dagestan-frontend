@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query"
 
 export const apiSlice = createApi({
   reducerPath: "api",
@@ -8,6 +8,6 @@ export const apiSlice = createApi({
       query: () => "/posts",
     }),
   }),
-});
+})
 
-export const { useGetPostsQuery } = apiSlice;
+export const { useGetPostsQuery } = apiSlice
