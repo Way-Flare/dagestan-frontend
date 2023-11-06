@@ -6,4 +6,10 @@ export const route = [
     path: paths.REGISTRATION_PAGE,
     Element: lazy(() => import("src/pages/RegistrationPage/RegistrationPage")),
   },
+  {
+    path: paths.AUTHORIZATION_PAGE,
+    Element: lazy(
+      () => import("src/pages/AuthorizationPage/AuthorizationPage"),
+    ),
+  },
 ]

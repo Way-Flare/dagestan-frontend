@@ -1,4 +1,4 @@
-export interface IData {
+export interface IRegData {
   confirmPassword: string
   gmail: string
   password: string
