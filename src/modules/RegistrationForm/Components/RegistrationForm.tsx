@@ -4,7 +4,7 @@ import { IRegData } from "src/modules/RegistrationForm/Interface/IRegData"
 import { paths } from "src/shared/const/path"
 import { NavLink } from "react-router-dom"
 import "src/app/style/auth.scss"
-import { stringValues } from "src/shared/const/stringValues"
+import { message, placeholderMail } from "src/shared/const/stringValues"
 
 export const RegistrationForm = () => {
   const [form] = useForm()
@@ -17,27 +17,18 @@ export const RegistrationForm = () => {
   return (
     <div className={"wrapper"}>
       <Form form={form} onFinish={onFinish} name={"registaration"}>
-        <Form.Item
-          name={"gmail"}
-          rules={[{ required: true, message: stringValues.message }]}
-        >
-          <Input placeholder={"Введите почту"} />
+        <Form.Item name={"mail"} rules={[{ required: true, message }]}>
+          <Input placeholder={placeholderMail} />
         </Form.Item>
-        <Form.Item
-          name={"phone"}
-          rules={[{ required: true, message: stringValues.message }]}
-        >
+        <Form.Item name={"phone"} rules={[{ required: true, message }]}>
           <Input placeholder={"Введите номер"} />
         </Form.Item>
-        <Form.Item
-          name={"password"}
-          rules={[{ required: true, message: stringValues.message }]}
-        >
+        <Form.Item name={"password"} rules={[{ required: true, message }]}>
           <Input.Password placeholder={"Создайте пароль"} />
         </Form.Item>
         <Form.Item
           name={"confirmPassword"}
-          rules={[{ required: true, message: stringValues.message }]}
+          rules={[{ required: true, message }]}
         >
           <Input.Password placeholder={"подтвердите пароль"} />
         </Form.Item>
