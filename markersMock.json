@@ -1,0 +1,34 @@
+{
+  "places": [
+    {
+      "id": 1,
+      "latitude": 42.983437,
+      "longitude": 47.505629
+    },
+    {
+      "id": 2,
+      "latitude": 42.983571,
+      "longitude": 42.983571
+    },
+    {
+      "id": 3,
+      "latitude": 42.987122,
+      "longitude": 47.505261
+    },
+    {
+      "id": 4,
+      "latitude": 42.986280,
+      "longitude": 47.499398
+    },
+    {
+      "id": 5,
+      "latitude": 42.988498,
+      "longitude": 47.498505
+    },
+    {
+      "id": 6,
+      "latitude": 42.989009,
+      "longitude": 47.493996
+    }
+  ]
+}

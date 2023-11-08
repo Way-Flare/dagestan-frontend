@@ -3,6 +3,10 @@ import { lazy } from "react"
 
 export const route = [
   {
+    path: paths.MAIN,
+    Element: lazy(() => import("src/pages/MainPage/MainPage")),
+  },
+  {
     path: paths.REGISTRATION_PAGE,
     Element: lazy(() => import("src/pages/RegistrationPage/RegistrationPage")),
   },
