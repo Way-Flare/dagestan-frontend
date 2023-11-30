@@ -1,19 +1,24 @@
 import { createApi } from "@reduxjs/toolkit/dist/query/react"
 import { fetchBaseQuery } from "@reduxjs/toolkit/query"
 
-export const routeApi = () =>
-  createApi({
-    reducerPath: "routeApi",
-    baseQuery: fetchBaseQuery({
-      baseUrl: `https://api.mapbox.com/directions/v5/mapbox/driving/42.983437,47.505629;42.983571,42.983571?geometries=geojson&access_token=${
-        import.meta.env.VITE_MAP_PUBLIC_TOKEN
-      }`,
-    }),
-    endpoints: (builder) => ({
-      getRoute: builder.query({
-        query: () => "/",
-      }),
-    }),
-  })
+export const routeApi = createApi({
+  reducerPath: "routeApi",
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://api.mapbox.com/directions/v5",
+  }),
+  endpoints: (builder) => ({
+    getDirections: builder.query({
+      query: ({ start, end }) => {
+        const params = {
+          accessToken: import.meta.env.VITE_MAP_PUBLIC_TOKEN,
+          geometries: "geojson",
+          waypoints: `${start[0]},${start[1]};${end[0]},${end[1]}`,
+        }
 
-export const { useGetRouteQuery } = routeApi
+        return `mapbox/driving/${params.waypoints}?geometries=${params.geometries}&access_token=${params.accessToken}`
+      },
+    }),
+  }),
+})
+
+export const { useGetDirectionsQuery } = routeApi
