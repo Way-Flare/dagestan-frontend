@@ -1,4 +1,4 @@
-import { Marker } from "@urbica/react-map-gl"
+import { Marker } from "react-map-gl"
 import { EnvironmentFilled } from "@ant-design/icons"
 import { FC } from "react"
 

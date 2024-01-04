@@ -24,7 +24,7 @@ export const AuthorizationForm = () => {
         >
           <Input.Password placeholder={placeholderPass} />
         </Form.Item>
-        <Form.Item rules={{ required: true, message: message }}>
+        <Form.Item rules={[{ required: true, message: message }]}>
           <Button htmlType={"submit"} block type={"primary"}>
             Войти
           </Button>

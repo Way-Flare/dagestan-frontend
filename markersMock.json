@@ -2,38 +2,38 @@
   "places": [
     {
       "typeId": 1,
-      "title": "",
-      "description": "",
-      "latitude": 42.9834324,
-      "longitude": 47.505629
+      "title": "Глав рыба",
+      "description": "Главное управление по рыболовству и рыбопромышленности",
+      "latitude": 43.075292,
+      "longitude": 46.83533043
     },
     {
       "typeId": 2,
-      "title": "",
-      "description": "",
-      "latitude": 42.987122,
-      "longitude": 47.505261
+      "title": "Сулакский каньон",
+      "description": "Каньон в долине реки Сулак",
+      "latitude": 43.0374789,
+      "longitude": 46.8058487
     },
     {
       "typeId": 3,
-      "title": "",
-      "description": "",
-      "latitude": 42.986280,
-      "longitude": 47.499398
+      "title": "Озеро Мочох",
+      "description": "Озеро обвально-запрудного типа на реке Моджох",
+      "latitude": 42.628544,
+      "longitude": 46.623471
     },
     {
       "typeId": 4,
-      "title": "",
-      "description": "",
-      "latitude": 42.988498,
-      "longitude": 47.498505
+      "title": "Маковое поле",
+      "description": "Один из самых захватывающих природных явлений",
+      "latitude": 43.07392,
+      "longitude": 47.16275
     },
     {
       "typeId": 5,
-      "title": "",
-      "description": "",
-      "latitude": 42.989009,
-      "longitude": 47.493996
+      "title": "Село Гуниб",
+      "description": "Село в Дагестане, находится в 150 км от Махачкалы на Гунибском плато",
+      "latitude": 42.386158,
+      "longitude": 46.962594
     }
   ]
 }
