@@ -50,7 +50,6 @@ export const Map = () => {
   const handleClick = (e) => {
     const { lngLat } = e
     const endPoint = Object.keys(lngLat).map((item) => lngLat[item])
-    console.log(endPoint)
     setEnd(endPoint)
   }
 
@@ -64,8 +63,6 @@ export const Map = () => {
         mapStyle={mapStyleLight}
         onMove={onViewportChange}
       >
-        <Markers />
-
         <Source id={"routeSource"} type={"geojson"} data={routeGeojson}>
           <Layer {...rootLineStyle} />
         </Source>
@@ -77,6 +74,8 @@ export const Map = () => {
           trackUserLocation={true}
         />
         <NavigationControl showCompass showZoom />
+
+        <Markers />
       </ReactMapGl>
     </div>
   )
