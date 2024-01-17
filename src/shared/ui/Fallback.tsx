@@ -1,5 +1,3 @@
-import { Spin } from "antd"
-
 export const Fallback = () => {
   return (
     <div
@@ -7,7 +5,7 @@ export const Fallback = () => {
         "w-full h-[100vh] flex direction-col justify-center items-center"
       }
     >
-      <Spin fullscreen={"true"} size={"large"} spinning={true} />
+      Loading...
     </div>
   )
 }

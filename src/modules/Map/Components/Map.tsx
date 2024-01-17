@@ -1,9 +1,4 @@
-import ReactMapGl, {
-  GeolocateControl,
-  Layer,
-  NavigationControl,
-  Source,
-} from "react-map-gl"
+import ReactMapGl, { GeolocateControl, NavigationControl } from "react-map-gl"
 import { useEffect, useState } from "react"
 import "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css"
 import {
@@ -34,10 +29,6 @@ export const Map = () => {
         onMove={onViewportChange}
       >
         <Markers />
-
-        <Source id={"routeSource"} type={"geojson"} data={routeGeojson}>
-          <Layer {...rootLineStyle} />
-        </Source>
 
         <GeolocateControl
           positionOptions={{ enableHighAccuracy: true }}
