@@ -7,7 +7,7 @@ import { IMarkers } from "src/shared/interface/IMarkers"
 
 export const Markers = () => {
   const { data: dataMarkers } = useGetMarkersQuery(null)
-  const [selectedMarker, setSelectedMarker] = useState<IMarkers>(null)
+  const [selectedMarker, setSelectedMarker] = useState<IMarkers>()
   const [timer, setTimer] = useState<number | null>(null)
 
   const onMouseEnter = (marker: IMarkers) => {
@@ -46,7 +46,7 @@ export const Markers = () => {
             onMouseEnter={() => onMouseEnter(marker)}
             onMouseLeave={onMouseLeave}
           >
-            <EnvironmentFilled className={"text-[1.5rem] col-white"} />
+            Точка
           </button>
         </Marker>
       ))}

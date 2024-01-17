@@ -38,6 +38,7 @@ module.exports = {
     "prettier"
   ],
   "rules": {
+    "react/prop-types": "off",
     "typescript-eslint/ban-ts-commit": "off",
     "typescript-eslint/ban-types": "off",
     "react/react-in-jsx-scope": "off",
