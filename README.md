@@ -6,7 +6,7 @@ https://vitejs.dev/
    pnpm dev
 
  
-## Run pull request
+## Before run pull request
    pnpm codecheck \
    pnpm build
 
