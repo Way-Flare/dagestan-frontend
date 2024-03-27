@@ -1,4 +1,4 @@
-import { Map } from "src/modules/Map/Components/Map"
+import { Map } from "@widgets/map"
 
 export default function () {
   return (

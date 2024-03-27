@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit"
-import { apiSlice } from "src/shared/api/defaultApi"
-import { rootReducer } from "src/app/store/rootReducer"
-import { routeApi } from "src/modules/Map/api/getRoute"
+import { rootReducer } from "./rootReducer"
+import { apiSlice } from "@shared/api/defaultApi"
+import { routeApi } from "@entities/map/api/get-route"
 
 export const store = configureStore({
   reducer: rootReducer,

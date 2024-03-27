@@ -12,8 +12,6 @@ export const route = [
   },
   {
     path: paths.AUTHORIZATION_PAGE,
-    Element: lazy(
-      () => import("src/pages/AuthorizationPage/AuthorizationPage"),
-    ),
+    Element: lazy(() => import("@pages/LoginPage/LoginPage")),
   },
 ]
