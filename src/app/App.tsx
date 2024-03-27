@@ -1,6 +1,6 @@
 import "./index.scss"
-import { withProviders } from "src/app/providers/withProviders"
-import { Routing } from "src/app/providers/Routing"
+import { Routing } from "./providers/Routing"
+import { withProviders } from "./providers/withProviders"
 
 function App() {
   return <Routing />
