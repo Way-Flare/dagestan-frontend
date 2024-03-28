@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "codecheck": "pnpm run lint && pnpm run betterer && pnpm run stylelint && pnpm run prettier",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 src --fix ",
     "preview": "vite preview",
     "codecheck": "pnpm run lint && pnpm run betterer && pnpm run stylelint && pnpm run prettier",
     "prepare": "husky install",
