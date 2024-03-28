@@ -9,9 +9,14 @@
     "codecheck": "pnpm run lint && pnpm run betterer && pnpm run stylelint && pnpm run prettier",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 src --fix ",
     "preview": "vite preview",
+    "codecheck": "pnpm run lint && pnpm run betterer && pnpm run stylelint && pnpm run prettier",
     "prepare": "husky install",
     "server": "json-server markersMock.json --w -p 3000",
-    "conc": "concurrently \"pnpm run server\" \"pnpm dev\""
+    "conc": "concurrently \"pnpm run server\" \"pnpm dev\"",
+    "betterer": "betterer",
+    "prettier": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 src --fix ",
+    "stylelint": "stylelint \"**/*.scss\" --fix"
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
@@ -26,10 +31,12 @@
     "@types/mapbox-gl": "^2.7.18",
     "@types/react-map-gl": "^6.1.6",
     "axios": "^1.6.1",
+    "betterer": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "compose-function": "^3.0.3",
     "json-server": "^0.17.4",
+    "lint-staged": "^15.2.2",
     "mapbox-gl": "^2.15.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -54,6 +61,7 @@
     "@typescript-eslint/eslint-plugin": "^6.7.5",
     "@typescript-eslint/parser": "^6.7.5",
     "@vitejs/plugin-react": "^4.0.3",
+    "add": "^2.0.6",
     "autoprefixer": "^10.4.16",
     "concurrently": "^8.2.2",
     "eslint": "8.22.0",
@@ -66,12 +74,27 @@
     "husky": "^8.0.3",
     "postcss": "^8.4.31",
     "prettier": "^3.0.3",
+    "rxjs": "^7.8.1",
+    "stylelint": "^16.2.1",
+    "stylelint-config-ns": "^2.1.0",
+    "stylelint-config-recommended": "^14.0.0",
+    "stylelint-config-recommended-scss": "^14.0.0",
+    "stylelint-config-standard-scss": "^13.0.0",
+    "stylelint-config-tailwindcss": "^0.0.7",
+    "stylelint-order": "^6.0.4",
+    "stylelint-scss": "^6.2.1",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.3.3",
-    "vite": "^5.0.11"
+    "vite": "^5.0.11",
+    "@betterer/cli": "^5.4.0"
   },
-  "prettier": {
-    "semi": false,
-    "endOfLine": "auto"
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.(css|scss)": [
+      "pnpm exec stylelint --fix"
+    ]
   }
 }

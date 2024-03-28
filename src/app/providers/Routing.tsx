@@ -1,5 +1,5 @@
+import { route } from "@shared/const/route"
 import { Route, Routes } from "react-router-dom"
-import { route } from "src/shared/const/route"
 
 export const Routing = () => {
   return (

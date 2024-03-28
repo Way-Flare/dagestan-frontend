@@ -1,3 +1,4 @@
+
 # Run on vite
 https://vitejs.dev/
 
@@ -26,3 +27,7 @@ https://vitejs.dev/
   ESLint \
   prettier \
   betterer
+
+# Run projects
+ pnpm i
+ pnpm dev

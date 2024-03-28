@@ -1,4 +1,4 @@
-import { RegistrationForm } from "src/modules/RegistrationForm/Components/RegistrationForm"
+import { RegistrationForm } from "@features/registration"
 
 export default function RegistrationPage() {
   return <RegistrationForm />
