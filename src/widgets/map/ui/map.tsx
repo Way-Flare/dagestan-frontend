@@ -1,5 +1,5 @@
 import ReactMapGl, { GeolocateControl, NavigationControl } from "react-map-gl"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css"
 import { accessToken, mapStyleLight, Markers, style } from "@entities/map"
 
@@ -19,15 +19,14 @@ export const Map = () => {
       <ReactMapGl
         {...viewport}
         style={style}
-        mapboxAccessToken={accessToken}
+        mapboxApiAccessToken={accessToken}
         mapStyle={mapStyleLight}
-        onMove={onViewportChange}
+        onViewportChange={onViewportChange}
       >
         <Markers />
 
         <GeolocateControl
           positionOptions={{ enableHighAccuracy: true }}
-          showAccuracyCircle={false}
           showUserLocation={true}
           trackUserLocation={true}
         />

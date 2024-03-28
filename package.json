@@ -1,19 +1,20 @@
 {
   "name": "dagestan-frontend",
   "private": true,
-  "version": "0.0.0",
+  "version": "20.11.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "codecheck": "pnpm run lint && pnpm run betterer && pnpm run stylelint && pnpm run prettier",
     "prepare": "husky install",
     "server": "json-server markersMock.json --w -p 3000",
     "conc": "concurrently \"pnpm run server\" \"pnpm dev\"",
     "betterer": "betterer",
     "prettier": "prettier --write \"src/**/*.{ts,tsx}\"",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 src --fix ",
-     "stylelint": "stylelint \"**/*.scss\" --fix"
+    "stylelint": "stylelint \"**/*.scss\" --fix"
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
