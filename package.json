@@ -1,11 +1,12 @@
 {
   "name": "dagestan-frontend",
   "private": true,
-  "version": "0.0.0",
+  "version": "20.11.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "codecheck": "pnpm run lint && pnpm run betterer && pnpm run stylelint && pnpm run prettier",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 src --fix ",
     "preview": "vite preview",
     "prepare": "husky install",
