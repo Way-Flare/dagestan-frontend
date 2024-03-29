@@ -23,6 +23,11 @@ export default ({ mode }) => {
           }),
     ],
     server: {
+       watch: {
+        usePolling: true,
+      },
+      host: true,
+      strictPort: true,
       port: 3001,
     },
     resolve: {
@@ -34,6 +39,5 @@ export default ({ mode }) => {
         "@entities": path.resolve("src/entities"),
         "@shared": path.resolve("src/shared"),
       },
-    },
   })
 }

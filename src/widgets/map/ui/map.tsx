@@ -21,9 +21,7 @@ export const Map = () => {
         style={style}
         mapboxAccessToken={accessToken}
         mapStyle={mapStyleLight}
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        onViewportChange={onViewportChange}
+        onMove={onViewportChange}
       >
         <Markers />
 
