@@ -17,8 +17,8 @@ import {
   Button,
   Checkbox,
 } from "@shared/ui"
-import { paths } from "@shared/const/path"
 import { formFieldsAuth } from "../const"
+import { paths } from "@app/providers/path"
 
 const formSchema = z.object({
   emailAddress: z.string().email({ message: "Неверная почта" }),
