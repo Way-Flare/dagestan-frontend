@@ -19,9 +19,9 @@ export const Map = () => {
       <ReactMapGl
         {...viewport}
         style={style}
-        mapboxApiAccessToken={accessToken}
+        mapboxAccessToken={accessToken}
         mapStyle={mapStyleLight}
-        onViewportChange={onViewportChange}
+        onMove={onViewportChange}
       >
         <Markers />
 
