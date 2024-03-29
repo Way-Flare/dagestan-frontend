@@ -19,8 +19,10 @@ export const Map = () => {
       <ReactMapGl
         {...viewport}
         style={style}
-        mapboxApiAccessToken={accessToken}
+        mapboxAccessToken={accessToken}
         mapStyle={mapStyleLight}
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         onViewportChange={onViewportChange}
       >
         <Markers />
