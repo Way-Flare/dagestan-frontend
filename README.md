@@ -6,6 +6,9 @@ https://vitejs.dev/
    pnpm i \
    pnpm dev
 
+## Run container
+   pnpm docker:build \
+   pnpm docker:run 
  
 ## Before run pull request
    pnpm codecheck \
