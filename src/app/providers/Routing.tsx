@@ -1,12 +1,6 @@
-import { route } from "@shared/const/route"
-import { Route, Routes } from "react-router-dom"
+import { RouterProvider } from "react-router-dom"
+import { router } from "./router"
 
 export const Routing = () => {
-  return (
-    <Routes>
-      {route.map(({ Element, path }) => (
-        <Route key={path} path={path} element={<Element />} />
-      ))}
-    </Routes>
-  )
+  return <RouterProvider router={router} />
 }
