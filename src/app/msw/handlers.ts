@@ -1,3 +1,4 @@
+import { placeHandlers } from "@entities/map/api/__mocks__/placeHandlers"
 import { http, HttpResponse } from "msw"
 
 export const handlers = [
@@ -10,4 +11,5 @@ export const handlers = [
       },
     })
   }),
+  ...placeHandlers,
 ]

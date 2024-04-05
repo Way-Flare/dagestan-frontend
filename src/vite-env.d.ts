@@ -3,6 +3,7 @@
 interface ImportMetaEnv {
   readonly VITE_APP_TITLE: string
   readonly VITE_MAP_PUBLIC_TOKEN: string
+  readonly VITE_API_HOST: string
 }
 
 interface ImportMeta {
