@@ -23,7 +23,7 @@ export default ({ mode }) => {
           }),
     ],
     server: {
-       watch: {
+      watch: {
         usePolling: true,
       },
       host: true,
@@ -39,5 +39,6 @@ export default ({ mode }) => {
         "@entities": path.resolve("src/entities"),
         "@shared": path.resolve("src/shared"),
       },
+    },
   })
 }

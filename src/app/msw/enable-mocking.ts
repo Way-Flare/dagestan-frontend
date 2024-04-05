@@ -10,7 +10,10 @@ export async function enableMocking() {
     // once the Service Worker is up and ready to intercept requests.
     await worker.start({
       onUnhandledRequest(req, print) {
-        if (req.url.match(/\.(png|jpg|svg|tsx?|css|scss|jsx?|woff2)/)) {
+        if (
+          req.url.match(/\.(png|jpg|js?|json?|svg|tsx?|css|scss|jsx?|woff2)/) ||
+          req.url.includes("mapbox")
+        ) {
           return
         }
 

@@ -1,37 +1,16 @@
 import { Marker } from "react-map-gl"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { MapPopup } from "./map-popup"
 import { IMarkers } from "@shared/interface/IMarkers"
 import { useGetMarkersQuery } from "../api"
 
 export const Markers = () => {
-  const { data: dataMarkers } = useGetMarkersQuery(null)
+  const { data: dataMarkers } = useGetMarkersQuery()
   const [selectedMarker, setSelectedMarker] = useState<IMarkers | null>()
-  const [timer, setTimer] = useState<number | NodeJS.Timeout | null>(null)
 
-  const onMouseEnter = (marker: IMarkers) => {
-    setTimer(
-      setTimeout(() => {
-        setSelectedMarker(marker)
-      }, 1000),
-    )
+  const handleClick = (marker: IMarkers) => {
+    setSelectedMarker(marker)
   }
-
-  const onMouseLeave = () => {
-    if (timer) {
-      clearTimeout(timer)
-      setTimer(null)
-    }
-  }
-
-  useEffect(() => {
-    const listener = (e) => {
-      if (e.key === "Escape") {
-        setSelectedMarker(null)
-      }
-    }
-    window.addEventListener("keydown", listener)
-  }, [])
 
   return (
     <>
@@ -40,18 +19,14 @@ export const Markers = () => {
           key={marker.typeId}
           latitude={marker.latitude}
           longitude={marker.longitude}
-        >
-          <button
-            onMouseEnter={() => onMouseEnter(marker)}
-            onMouseLeave={onMouseLeave}
-          >
-            Точка
-          </button>
-        </Marker>
+          offset={[25, 25]}
+          onClick={() => handleClick(marker)}
+        />
       ))}
 
       {selectedMarker && (
         <MapPopup
+          id={selectedMarker.id}
           typeId={selectedMarker.typeId}
           longitude={selectedMarker.longitude}
           latitude={selectedMarker.latitude}

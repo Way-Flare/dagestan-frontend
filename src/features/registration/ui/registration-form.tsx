@@ -12,9 +12,9 @@ import {
   FormLabel,
   FormMessage,
 } from "@shared/ui/form"
-import { paths } from "@shared/const/path"
 import { formFieldsReg } from "../const"
 import { Button, Input } from "@shared/ui"
+import { paths } from "@app/providers/path"
 
 const formSchema = z
   .object({
