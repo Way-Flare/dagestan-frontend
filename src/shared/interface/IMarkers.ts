@@ -6,3 +6,12 @@ export interface IMarkers {
   latitude: number
   longitude: number
 }
+
+export interface ViewportType {
+  latitude: number
+  longitude: number
+  width: string
+  height: string
+  zoom: number
+  transitionDuration: string
+}
