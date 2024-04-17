@@ -5,7 +5,7 @@ import { rtk_tags } from "@shared/api/tags"
 export const mapMarkersApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getMarkers: builder.query<IMarkers[], void>({
-      query: () => "/places",
+      query: () => "/v1/places/all?format=json",
       providesTags: [rtk_tags.PLACES_TAG],
     }),
     getMarker: builder.query<IMarkers, { placeId: number }>({

@@ -53,7 +53,6 @@ export const Map = () => {
       const data = await geoJson.json()
       const coords = data.routes[0].geometry.coordinates
       setCoords(coords)
-      console.log(data)
     }
     getData()
     return

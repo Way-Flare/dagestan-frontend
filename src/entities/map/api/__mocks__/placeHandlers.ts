@@ -2,7 +2,7 @@ import { http, HttpResponse } from "msw"
 import { __serverDatabase } from "@shared/lib/server"
 
 export const placeHandlers = [
-  http.get("/places", () => {
+  http.get("/v1/places/all", () => {
     const places = __serverDatabase.place.getAll()
 
     return HttpResponse.json(places)
