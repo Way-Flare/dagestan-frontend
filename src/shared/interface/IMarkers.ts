@@ -8,6 +8,8 @@ export interface IMarkers {
 }
 
 export interface ViewportType {
+  bearing: number
+  pitch: number
   latitude: number
   longitude: number
   width: string
