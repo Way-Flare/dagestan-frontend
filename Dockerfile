@@ -10,9 +10,9 @@ COPY . .
 
 RUN pnpm build
 
-FROM nginx:1.21.0-alpine
+FROM nginx:1.25-alpine
 
 COPY --from=builder /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-CMD ['nginx', '-g', 'daemon off;']
+CMD ["sh", "-c", "nginx -g 'daemon off;'"]
