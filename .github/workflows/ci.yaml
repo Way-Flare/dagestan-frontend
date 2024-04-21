@@ -23,9 +23,10 @@ jobs:
         run: |
           if [ -e package-lock.json ]; then
             npm ci eslint
-            else
+          else
             npm i
             npm eslint
+          fi
           npm run lint:ts
       - name: prettier lint
         run: pnpm prettier:check:ci
