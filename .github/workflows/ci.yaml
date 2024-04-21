@@ -21,8 +21,11 @@ jobs:
         run: pnpm install
       - name: eslinting
         run: |
-          npm ci eslint
-          npm i
+          if [ -e package-lock.json ]; then
+            npm ci eslint
+            else
+            npm i
+            npm eslint
           npm run lint:ts
       - name: prettier lint
         run: pnpm prettier:check:ci
