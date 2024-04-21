@@ -16,7 +16,7 @@ jobs:
       - name: install pnmp
         uses: pnpm/action-setup@v2
         with:
-          verion: 8
+          version: 8
       - name: install dependencies
         run: pnpm install
       - name: eslinting
