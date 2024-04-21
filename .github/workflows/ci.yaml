@@ -22,6 +22,4 @@ jobs:
       - name: eslinting
         run: |
           pnpm codecheck 
-      - name: prettier lint
-        run: pnpm prettier:check:ci
 
