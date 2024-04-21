@@ -21,8 +21,8 @@ jobs:
         run: pnpm install
       - name: eslinting
         run: |
-          pnmp eslint
-          pnmp run lint:ts
+          eslint . 
+          npm run lint:ts
       - name: prettier lint
         run: pnpm prettier:check:ci
 
