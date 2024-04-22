@@ -3,6 +3,31 @@ import { defineConfig, loadEnv } from "vite"
 import react from "@vitejs/plugin-react"
 import tsconfigPaths from "vite-tsconfig-paths"
 import EnvironmentPlugin from "vite-plugin-environment"
+import { VitePWA } from "vite-plugin-pwa"
+
+const pwa = VitePWA({
+  registerType: "autoUpdate",
+  outDir: "dist",
+  manifest: {
+    name: "wayflare_pwa",
+    short_name: "wayflare",
+    start_url: "/",
+    display: "standalone",
+    theme_color: "#ffff",
+    icons: [
+      {
+        src: "img/android-chrome-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+      {
+        src: "img/android-chrome-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
+  },
+})
 
 // https://vitejs.dev/config/
 export default ({ mode }) => {
@@ -14,6 +39,7 @@ export default ({ mode }) => {
   return defineConfig({
     plugins: [
       react(),
+      pwa,
       tsconfigPaths(),
       EnvironmentPlugin({
         MOCK: mockOn ? process.env.MOCK : "false",
