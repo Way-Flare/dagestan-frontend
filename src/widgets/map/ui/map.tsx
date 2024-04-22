@@ -11,6 +11,54 @@ import "./map.scss"
 import { TestForm } from "./testForm"
 import { IMarkers, ViewportType } from "@shared/interface/IMarkers"
 
+// const buildings3DLayer = {
+//   id: "add-3d-buildings",
+//   source: "composite",
+//   "source-layer": "building",
+//   filter: ["==", "extrude", "true"],
+//   type: "fill-extrusion",
+//   minzoom: 15,
+//   paint: {
+//     "fill-extrusion-color": "#aaa",
+
+//     // Use an 'interpolate' expression to
+//     // add a smooth transition effect to
+//     // the buildings as the user zooms in.
+//     "fill-extrusion-height": [
+//       "interpolate",
+//       ["linear"],
+//       ["zoom"],
+//       15,
+//       0,
+//       15.05,
+//       ["get", "height"],
+//     ],
+//     "fill-extrusion-base": [
+//       "interpolate",
+//       ["linear"],
+//       ["zoom"],
+//       15,
+//       0,
+//       15.05,
+//       ["get", "min_height"],
+//     ],
+//     "fill-extrusion-opacity": 0.6,
+//   },
+// }
+
+const buildings3DLayer = {
+  id: "3d-buildings",
+  source: "composite",
+  "source-layer": "building",
+  filter: ["==", "extrude", "true"],
+  type: "fill-extrusion",
+  minzoom: 14,
+  paint: {
+    "fill-extrusion-color": "#ccc",
+    "fill-extrusion-height": ["get", "height"],
+  },
+}
+
 const lineStyle = {
   id: "roadLayer",
   type: "line",
@@ -35,6 +83,8 @@ export const Map = () => {
     width: "100vw",
     height: "100vh",
     zoom: 9,
+    bearing: 20,
+    pitch: 30,
     transitionDuration: "auto",
   })
   const mapRef = useRef()
@@ -74,6 +124,7 @@ export const Map = () => {
       <ReactMapGl
         {...viewport}
         maxZoom={20}
+        antialias={true}
         style={style}
         mapboxAccessToken={accessToken}
         mapStyle={mapStyleLight}
@@ -99,7 +150,6 @@ export const Map = () => {
           setViewport={setViewport}
           setSelectedMarker={setSelectedMarker}
         />
-
         <Source
           id="routeSource"
           type="geojson"
@@ -111,6 +161,10 @@ export const Map = () => {
             <Layer {...lineStyle} />
           }
         </Source>
+        {
+          // @ts-ignore
+          <Layer {...buildings3DLayer} />
+        }
       </ReactMapGl>
     </div>
   )
