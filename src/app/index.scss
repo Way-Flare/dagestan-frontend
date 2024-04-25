@@ -1,9 +1,11 @@
+
+@import "./style/color";
+@import "style/mapBox";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import "style/color";
-@import "style/mapBox";
 
 a {
   text-decoration:  none      ;
