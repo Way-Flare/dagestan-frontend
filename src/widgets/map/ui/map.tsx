@@ -8,8 +8,8 @@ import { useEffect, useRef, useState } from "react"
 import "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css"
 import { accessToken, ClusterMarker, mapStyleLight, style } from "@entities/map"
 import "./map.scss"
-import { TestForm } from "./testForm"
 import { IMarkers, ViewportType } from "@shared/interface/IMarkers"
+import { useGetMarkerQuery } from "@entities/map/api/map-markers-api"
 
 // const buildings3DLayer = {
 //   id: "add-3d-buildings",
@@ -75,7 +75,14 @@ const lineStyle = {
 
 export const Map = () => {
   const [marker, setSelectedMarker] = useState<IMarkers | undefined>(undefined)
-  const [newLngLat, setNewLngLat] = useState({ longitude: 0, latitude: 0 })
+  // const [newLngLat, setNewLngLat] = useState({ longitude: 0, latitude: 0 })
+
+  const { data: dataMarker } = useGetMarkerQuery({
+    placeId: marker?.id ?? 1,
+  })
+  if (marker) {
+    console.log(dataMarker)
+  }
 
   const [viewport, setViewport] = useState<ViewportType>({
     latitude: 43,
@@ -120,7 +127,7 @@ export const Map = () => {
 
   return (
     <div className={"relative"}>
-      <TestForm marker={marker} newLngLat={newLngLat} />
+      {/* <TestForm marker={marker} newLngLat={newLngLat} /> */}
       <ReactMapGl
         {...viewport}
         maxZoom={20}
@@ -128,12 +135,12 @@ export const Map = () => {
         style={style}
         mapboxAccessToken={accessToken}
         mapStyle={mapStyleLight}
-        onClick={(event) =>
-          setNewLngLat({
-            longitude: event.lngLat.lng,
-            latitude: event.lngLat.lat,
-          })
-        }
+        // onClick={(event) =>
+        //   setNewLngLat({
+        //     longitude: event.lngLat.lng,
+        //     latitude: event.lngLat.lat,
+        //   })
+        // }
         onMove={onViewportChange}
         // @ts-ignore
         ref={mapRef}

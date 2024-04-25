@@ -11,8 +11,7 @@ export const mapMarkersApi = apiSlice.injectEndpoints({
     getMarker: builder.query<IMarkers, { placeId: number }>({
       query: ({ placeId }) => {
         return {
-          url: "/place",
-          params: { placeId },
+          url: `/v1/places/${placeId}?format=json`,
         }
       },
       providesTags: [rtk_tags.PLACE_TAG],

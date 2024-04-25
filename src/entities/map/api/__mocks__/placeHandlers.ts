@@ -7,10 +7,8 @@ export const placeHandlers = [
 
     return HttpResponse.json(places)
   }),
-  http.get("/place", (req) => {
-    const paramsString = req.request.url.split("?")[1]
-    const searchParams = new URLSearchParams(paramsString)
-    const placeId = Number(searchParams.get("placeId"))
+  http.get("/v1/places/:placeId", (req) => {
+    const placeId = Number(req.params.placeId)
     const places = __serverDatabase.place.findFirst({
       where: {
         id: {
