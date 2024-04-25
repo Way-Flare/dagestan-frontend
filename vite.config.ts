@@ -49,6 +49,16 @@ export default ({ mode }) => {
             : process.env.VITE_API_HOST,
       }),
     ],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import "${path.resolve(
+            __dirname,
+            "./src/app/style/color.scss",
+          )}";`,
+        },
+      },
+    },
 
     server: {
       proxy: {
