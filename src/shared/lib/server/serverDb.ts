@@ -9,7 +9,7 @@ export const db = factory({
   place: {
     id: primaryKey(Number),
     typeId: Number,
-    title: String,
+    name: String,
     description: String,
     latitude: Number,
     longitude: Number,

@@ -1,15 +1,15 @@
 export interface IMarkers {
   id?: number
   typeId: number
-  title: string
+  name: string
   description: string
   latitude: number
   longitude: number
 }
 
 export interface ViewportType {
-  bearing: number
-  pitch: number
+  bearing?: number
+  pitch?: number
   latitude: number
   longitude: number
   width: string

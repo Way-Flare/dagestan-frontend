@@ -3,12 +3,9 @@ import { Marker } from "react-map-gl"
 import useSupercluster from "use-supercluster"
 import { IMarkers, ViewportType } from "@shared/interface/IMarkers"
 import { useGetMarkersQuery } from ".."
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@shared/shadcn/components/ui/hover-card"
-import MapMarkerSVG from "@shared/img/map-marker.svg"
+
+import "./cluster-marker.scss"
+import { OneMarker } from "./one-marker"
 
 type Props = {
   mapRef: React.MutableRefObject<undefined>
@@ -29,6 +26,7 @@ export const ClusterMarker: FC<Props> = ({
     type: "Feature",
     properties: { placeId: place.id, cluster: false },
     description: place.description,
+    name: place.name,
     geometry: {
       type: "Point",
       coordinates: [place.longitude, place.latitude],
@@ -55,14 +53,15 @@ export const ClusterMarker: FC<Props> = ({
       return (
         <Marker
           key={`cluster-${cluster.id}`}
+          anchor="bottom"
           latitude={latitude}
           longitude={longitude}
         >
           <div
-            className="cluster-marker"
+            className="marker1 flex justify-center items-center font-semibold text-base h-[60px]"
             style={{
-              width: `${20 + (pointCount / points.length) * 20}px`,
-              height: `${20 + (pointCount / points.length) * 20}px`,
+              width: `${25 + (pointCount / points.length) * 20}px`,
+              height: `${25 + (pointCount / points.length) * 20}px`,
             }}
             onClick={() => {
               const expansionZoom = Math.min(
@@ -80,29 +79,20 @@ export const ClusterMarker: FC<Props> = ({
           >
             {pointCount}
           </div>
+          <div className="marker2"></div>
         </Marker>
       )
     }
 
     return (
-      <HoverCard key={`place-${cluster.properties.placeId}`}>
-        <Marker
-          key={`place-${cluster.properties.placeId}`}
-          latitude={latitude}
-          longitude={longitude}
-          onClick={() => {
-            const foundMarker = places?.find(
-              (place) => place.id === cluster.properties.placeId,
-            )
-            setSelectedMarker(foundMarker)
-          }}
-        >
-          <HoverCardTrigger>
-            <img src={MapMarkerSVG} width={34} height={34} />
-          </HoverCardTrigger>
-        </Marker>
-        <HoverCardContent>{cluster?.description}</HoverCardContent>
-      </HoverCard>
+      <OneMarker
+        key={`place-${cluster.properties.placeId}`}
+        cluster={cluster}
+        latitude={latitude}
+        longitude={longitude}
+        setSelectedMarker={setSelectedMarker}
+        places={places}
+      />
     )
   })
 }

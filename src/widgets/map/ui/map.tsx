@@ -10,6 +10,8 @@ import { accessToken, ClusterMarker, mapStyleLight, style } from "@entities/map"
 import "./map.scss"
 import { IMarkers, ViewportType } from "@shared/interface/IMarkers"
 import { useGetMarkerQuery } from "@entities/map/api/map-markers-api"
+import { useAppSelector } from "@app/store/hooks"
+import { selectShowMap } from "@shared/redux"
 
 // const buildings3DLayer = {
 //   id: "add-3d-buildings",
@@ -74,9 +76,9 @@ const lineStyle = {
 }
 
 export const Map = () => {
+  const showMap = useAppSelector(selectShowMap)
   const [marker, setSelectedMarker] = useState<IMarkers | undefined>(undefined)
   // const [newLngLat, setNewLngLat] = useState({ longitude: 0, latitude: 0 })
-
   const { data: dataMarker } = useGetMarkerQuery({
     placeId: marker?.id ?? 1,
   })
@@ -90,8 +92,8 @@ export const Map = () => {
     width: "100vw",
     height: "100vh",
     zoom: 9,
-    bearing: 20,
-    pitch: 30,
+    // bearing: 20,
+    // pitch: 30,
     transitionDuration: "auto",
   })
   const mapRef = useRef()
@@ -124,55 +126,56 @@ export const Map = () => {
       },
     ],
   }
-
   return (
-    <div className={"relative"}>
-      {/* <TestForm marker={marker} newLngLat={newLngLat} /> */}
-      <ReactMapGl
-        {...viewport}
-        maxZoom={20}
-        antialias={true}
-        style={style}
-        mapboxAccessToken={accessToken}
-        mapStyle={mapStyleLight}
-        // onClick={(event) =>
-        //   setNewLngLat({
-        //     longitude: event.lngLat.lng,
-        //     latitude: event.lngLat.lat,
-        //   })
-        // }
-        onMove={onViewportChange}
-        // @ts-ignore
-        ref={mapRef}
-      >
-        <GeolocateControl
-          positionOptions={{ enableHighAccuracy: true }}
-          showUserLocation={true}
-          trackUserLocation={true}
-        />
-        <NavigationControl showCompass showZoom />
-        <ClusterMarker
-          mapRef={mapRef}
-          viewport={viewport}
-          setViewport={setViewport}
-          setSelectedMarker={setSelectedMarker}
-        />
-        <Source
-          id="routeSource"
-          type="geojson"
+    <>
+      <div className={"relative"}>
+        {/* <TestForm marker={marker} newLngLat={newLngLat} /> */}
+        <ReactMapGl
+          {...viewport}
+          maxZoom={20}
+          antialias={true}
+          style={showMap ? style : { display: "hidden" }}
+          mapboxAccessToken={accessToken}
+          mapStyle={mapStyleLight}
+          // onClick={(event) =>
+          //   setNewLngLat({
+          //     longitude: event.lngLat.lng,
+          //     latitude: event.lngLat.lat,
+          //   })
+          // }
+          onMove={onViewportChange}
           // @ts-ignore
-          data={geojson}
+          ref={mapRef}
         >
+          <GeolocateControl
+            positionOptions={{ enableHighAccuracy: true }}
+            showUserLocation={true}
+            trackUserLocation={true}
+          />
+          <NavigationControl showCompass showZoom />
+          <ClusterMarker
+            mapRef={mapRef}
+            viewport={viewport}
+            setViewport={setViewport}
+            setSelectedMarker={setSelectedMarker}
+          />
+          <Source
+            id="routeSource"
+            type="geojson"
+            // @ts-ignore
+            data={geojson}
+          >
+            {
+              // @ts-ignore
+              <Layer {...lineStyle} />
+            }
+          </Source>
           {
             // @ts-ignore
-            <Layer {...lineStyle} />
+            <Layer {...buildings3DLayer} />
           }
-        </Source>
-        {
-          // @ts-ignore
-          <Layer {...buildings3DLayer} />
-        }
-      </ReactMapGl>
-    </div>
+        </ReactMapGl>
+      </div>
+    </>
   )
 }

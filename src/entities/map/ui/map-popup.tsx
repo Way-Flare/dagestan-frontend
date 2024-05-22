@@ -8,13 +8,13 @@ export const MapPopup: FC<IMarkers> = ({
   longitude,
   latitude,
   description,
-  title,
+  name,
 }) => {
   const [isPopupVisible, setIsPopupVisible] = useState(true)
 
   useEffect(() => {
     setIsPopupVisible(true)
-  }, [longitude, latitude, title, description])
+  }, [longitude, latitude, name, description])
 
   const closePopup = () => {
     setIsPopupVisible(false)
@@ -28,7 +28,7 @@ export const MapPopup: FC<IMarkers> = ({
       onClose={closePopup}
     >
       <div className="col">
-        <div>{title}</div>
+        <div>{name}</div>
         <div>{description}</div>
         <h1>фото</h1>
         <Button variant={"destructive"}>Провести маршрут</Button>
