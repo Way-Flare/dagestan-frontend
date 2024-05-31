@@ -2,7 +2,7 @@ name: build, push, deploy and cleanup
 on: 
   push:
     branches: 
-      - "feature/new-ci-cd"
+      - "dev"
 
 jobs:
   build_and_push:
