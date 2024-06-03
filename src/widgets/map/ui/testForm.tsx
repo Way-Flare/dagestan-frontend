@@ -22,7 +22,7 @@ export const TestForm: FC<Props> = ({ marker, newLngLat }) => {
     event.preventDefault()
     const formData = new FormData(event.target as HTMLFormElement)
     const id = Number(formData.get("id"))
-    const title = String(formData.get("title"))
+    const name = String(formData.get("name"))
     const description = String(formData.get("description"))
     const latitude = Number(formData.get("latitude"))
     const longitude = Number(formData.get("longitude"))
@@ -31,7 +31,7 @@ export const TestForm: FC<Props> = ({ marker, newLngLat }) => {
       const newMarker: IMarkers = {
         id,
         typeId: id,
-        title,
+        name,
         description,
         latitude: newLngLat?.latitude,
         longitude: newLngLat.longitude,
@@ -41,7 +41,7 @@ export const TestForm: FC<Props> = ({ marker, newLngLat }) => {
       const newMarker: IMarkers = {
         id,
         typeId: id,
-        title,
+        name,
         description,
         latitude,
         longitude,
@@ -67,11 +67,11 @@ export const TestForm: FC<Props> = ({ marker, newLngLat }) => {
       <form onSubmit={onSubmit}>
         <label>id</label>
         <input key={`${marker?.id}0`} name="id" defaultValue={marker?.id} />
-        <label>title</label>
+        <label>name</label>
         <input
-          key={`${marker?.id}${marker?.title}1`}
-          name="title"
-          defaultValue={marker?.title}
+          key={`${marker?.id}${marker?.name}1`}
+          name="name"
+          defaultValue={marker?.name}
         />
         <label>description</label>
         <input

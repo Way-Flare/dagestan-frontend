@@ -2,7 +2,11 @@ import "./index.scss"
 import { Routing } from "./providers/Routing"
 
 function App() {
-  return <Routing />
+  return (
+    <>
+      <Routing />
+    </>
+  )
 }
 
 export default App
