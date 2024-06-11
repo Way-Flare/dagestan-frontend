@@ -19,14 +19,14 @@ export const placeHandlers = [
 
     return HttpResponse.json(places)
   }),
-  http.post("/place", async (req) => {
+  http.post("/places", async (req) => {
     const body = await req.request.json()
     // @ts-ignore
     const newPlace = __serverDatabase.place.create(body?.marker)
 
     return HttpResponse.json(newPlace)
   }),
-  http.patch("/place/:placeId", async (req) => {
+  http.patch("/places/:placeId", async (req) => {
     const body = await req.request.json()
     const newPlace = __serverDatabase.place.update({
       where: {
@@ -38,7 +38,7 @@ export const placeHandlers = [
 
     return HttpResponse.json(newPlace)
   }),
-  http.delete("/place/:placeId", (req) => {
+  http.delete("/places/:placeId", (req) => {
     const deletePlace = __serverDatabase.place.delete({
       where: {
         id: { equals: Number(req.params.placeId) },

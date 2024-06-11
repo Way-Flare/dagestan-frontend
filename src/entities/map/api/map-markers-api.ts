@@ -18,7 +18,7 @@ export const mapMarkersApi = apiSlice.injectEndpoints({
     }),
     createMarker: builder.mutation<{}, { marker: IMarkers }>({
       query: ({ marker }) => ({
-        url: `/place`,
+        url: `/places`,
         method: "POST",
         body: { marker },
       }),
@@ -26,7 +26,7 @@ export const mapMarkersApi = apiSlice.injectEndpoints({
     }),
     updateMarker: builder.mutation<{}, { marker: IMarkers }>({
       query: ({ marker }) => ({
-        url: `/place/${marker.id}`,
+        url: `/places/${marker.id}`,
         method: "PATCH",
         body: { marker },
       }),
@@ -34,7 +34,7 @@ export const mapMarkersApi = apiSlice.injectEndpoints({
     }),
     deleteMarker: builder.mutation<{}, { markerId: number }>({
       query: ({ markerId }) => ({
-        url: `/place/${markerId}`,
+        url: `/places/${markerId}`,
         method: "DELETE",
       }),
       invalidatesTags: [rtk_tags.PLACES_TAG],

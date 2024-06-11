@@ -9,7 +9,7 @@ type Props = {
 
 export const RouteCard: FC<Props> = () => {
   return (
-    <div className="overflow-hidden md:basis-[23%] relative">
+    <div className="overflow-hidden md:basis-[23%] basis-[100%] relative">
       <div className="flex justify-end absolute gap-2 right-3 top-3">
         <img className="h-9 w-9" src={likeIcon} />
       </div>

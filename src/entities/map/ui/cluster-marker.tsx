@@ -6,6 +6,8 @@ import { useGetMarkersQuery } from ".."
 
 import "./cluster-marker.scss"
 import { OneMarker } from "./one-marker"
+import { OneMarkerMobile } from "./one-marker-mobile"
+import { useAppSelector } from "@app/store/hooks"
 
 type Props = {
   mapRef: React.MutableRefObject<undefined>
@@ -21,6 +23,7 @@ export const ClusterMarker: FC<Props> = ({
   setSelectedMarker,
 }) => {
   const { data: places } = useGetMarkersQuery()
+  const isDesktop = useAppSelector((state) => state.settings.isDesktop)
 
   const points = (places ?? []).map((place) => ({
     type: "Feature",
@@ -84,8 +87,17 @@ export const ClusterMarker: FC<Props> = ({
       )
     }
 
-    return (
+    return isDesktop ? (
       <OneMarker
+        key={`place-${cluster.properties.placeId}`}
+        cluster={cluster}
+        latitude={latitude}
+        longitude={longitude}
+        setSelectedMarker={setSelectedMarker}
+        places={places}
+      />
+    ) : (
+      <OneMarkerMobile
         key={`place-${cluster.properties.placeId}`}
         cluster={cluster}
         latitude={latitude}
