@@ -5,5 +5,5 @@ type Props = {
 }
 
 export const Layout: FC<Props> = ({ children }) => {
-  return <div className="px-4 pt-36">{children}</div>
+  return <div className="px-4 lg:pt-24">{children}</div>
 }

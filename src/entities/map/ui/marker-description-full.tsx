@@ -1,8 +1,9 @@
 import { markerDescriptionIcons } from "@shared/icons/icons"
 import { FC } from "react"
-import randomPhotoFull from "@shared/img/markerDescription/random_photo_full.png"
 import { Separator } from "@shared/shadcn/components/ui/separator"
-import { PopoverClose } from "@shared/shadcn/components/ui/popover"
+import { DialogClose } from "@shared/shadcn/components/ui/dialog"
+import heartIcon from "@shared/img/navbarIcons/heart.png"
+import randomPhotoFull from "@shared/img/markerDescription/random_photo_full.png"
 
 type Props = {
   name: string
@@ -10,14 +11,14 @@ type Props = {
 
 export const MarkerDescriptionFull: FC<Props> = ({ name }) => {
   return (
-    <div className="flex flex-col overflow-hidden">
+    <div className="flex flex-col overflow-scroll scrollbar-hidden max-h-[90dvh]">
       <div className="flex justify-between pb-2">
         <a href="">
           <span className="text-[#0B5D1E]">Перейти на страницу места</span>
         </a>
-        <PopoverClose>
+        <DialogClose>
           <img src={markerDescriptionIcons.closeButtonGreen} />
-        </PopoverClose>
+        </DialogClose>
       </div>
       <img
         className="h-[243px] w-[388px] object-cover object-center rounded-md bg-cover"
@@ -51,13 +52,17 @@ export const MarkerDescriptionFull: FC<Props> = ({ name }) => {
           вдохновляющей покой и умиротворение. Идеальное место для фотографий и
           душевного отдыха в объятиях горных вершин.
         </div>
-        <div className="flex justify-between items-center py-2 gap-2">
-          <button className="flex basis-[86%] justify-center items-center bg-[#0B5D1E] text-center text-[white] h-[52px] rounded-xl">
-            <img
-              className="h-[24px] w-[24px] mr-2"
-              src={markerDescriptionIcons.whiteHeart}
-            />
-            В избранное
+        <div className="flex justify-between items-center py-2 gap-1">
+          <button className="flex basis-2/3 justify-center items-center bg-[#0B5D1E] text-center text-[white] h-[52px] rounded-xl">
+            Построить маршрут
+          </button>
+          <button>
+            <div className="bg-[#0B5D1E] h-[52px] w-[52px] opacity-10 rounded-xl">
+              <img
+                className="text-[#0B5D1E] h-[32px] w-[32px]"
+                src={heartIcon}
+              />
+            </div>
           </button>
           <button>
             <img

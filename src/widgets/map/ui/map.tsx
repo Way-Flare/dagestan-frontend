@@ -128,7 +128,7 @@ export const Map = () => {
   }
   return (
     <>
-      <div className={"relative"}>
+      <div>
         {/* <TestForm marker={marker} newLngLat={newLngLat} /> */}
         <ReactMapGl
           {...viewport}

@@ -4,17 +4,17 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@shared/shadcn/components/ui/hover-card"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@shared/shadcn/components/ui/popover"
 import { FC, useState } from "react"
 import { Marker } from "react-map-gl"
 import { MarkerUI } from "./marker-ui"
 import { MarkerDescriptionShort } from "./marker-description-short"
 import { MarkerDescriptionFull } from "./marker-description-full"
 import { IMarkers } from "@shared/interface/IMarkers"
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@shared/shadcn/components/ui/dialog"
 
 type Props = {
   cluster: any
@@ -32,9 +32,12 @@ export const OneMarker: FC<Props> = ({
   places,
 }) => {
   const [openedShortDescription, setOpenedShortDescription] = useState(false)
+
   return (
     <div onMouseLeave={() => setOpenedShortDescription(false)}>
-      <Popover key={`place-${cluster.properties.placeId}`}>
+      <Dialog key={`place-${cluster.properties.placeId}`}>
+        {/* <Popover key={`place-${cluster.properties.placeId}`}> */}
+
         <HoverCard open={openedShortDescription}>
           <Marker
             key={`place-${cluster.properties.placeId}`}
@@ -48,13 +51,15 @@ export const OneMarker: FC<Props> = ({
               setSelectedMarker(foundMarker)
             }}
           >
-            <PopoverTrigger>
+            {/* <PopoverTrigger> */}
+            <DialogTrigger>
               <HoverCardTrigger
                 onMouseEnter={() => setOpenedShortDescription(true)}
               >
                 <MarkerUI name={cluster?.name} />
               </HoverCardTrigger>
-            </PopoverTrigger>
+            </DialogTrigger>
+            {/* </PopoverTrigger> */}
           </Marker>
           <HoverCardContent className="p-0 rounded-xl w-[336px]" sideOffset={0}>
             <MarkerDescriptionShort
@@ -62,11 +67,15 @@ export const OneMarker: FC<Props> = ({
               name={cluster.name}
             />
           </HoverCardContent>
-          <PopoverContent className="w-[420px]" side="left">
+
+          {/* <PopoverContent className="h-[736px] w-[420px]" side="left"> */}
+          <DialogContent className="left-[5dvw] top-[15dvh] max-h-[90dvh] h-[736px] w-[420px]">
             <MarkerDescriptionFull name={cluster.name} />
-          </PopoverContent>
+          </DialogContent>
+          {/* </PopoverContent> */}
         </HoverCard>
-      </Popover>
+        {/* </Popover> */}
+      </Dialog>
     </div>
   )
 }
