@@ -36,8 +36,6 @@ export const OneMarker: FC<Props> = ({
   return (
     <div onMouseLeave={() => setOpenedShortDescription(false)}>
       <Dialog key={`place-${cluster.properties.placeId}`}>
-        {/* <Popover key={`place-${cluster.properties.placeId}`}> */}
-
         <HoverCard open={openedShortDescription}>
           <Marker
             key={`place-${cluster.properties.placeId}`}
@@ -51,30 +49,25 @@ export const OneMarker: FC<Props> = ({
               setSelectedMarker(foundMarker)
             }}
           >
-            {/* <PopoverTrigger> */}
             <DialogTrigger>
               <HoverCardTrigger
                 onMouseEnter={() => setOpenedShortDescription(true)}
               >
-                <MarkerUI name={cluster?.name} />
+                <MarkerUI place={cluster.place} />
               </HoverCardTrigger>
             </DialogTrigger>
-            {/* </PopoverTrigger> */}
           </Marker>
           <HoverCardContent className="p-0 rounded-xl w-[336px]" sideOffset={0}>
             <MarkerDescriptionShort
               setOpenedShortDescription={setOpenedShortDescription}
-              name={cluster.name}
+              place={cluster.place}
             />
           </HoverCardContent>
 
-          {/* <PopoverContent className="h-[736px] w-[420px]" side="left"> */}
           <DialogContent className="left-[5dvw] top-[15dvh] max-h-[90dvh] h-[736px] w-[420px]">
-            <MarkerDescriptionFull name={cluster.name} />
+            <MarkerDescriptionFull place={cluster.place} />
           </DialogContent>
-          {/* </PopoverContent> */}
         </HoverCard>
-        {/* </Popover> */}
       </Dialog>
     </div>
   )

@@ -47,13 +47,13 @@ export const OneMarkerMobile: FC<Props> = ({
         }}
       >
         <DialogTrigger onClick={() => setOpenedDescription(true)}>
-          <MarkerUI name={cluster?.name} />
+          <MarkerUI place={cluster.place} />
         </DialogTrigger>
       </Marker>
 
       <DialogContent className={`left-[2dvw] bottom-[10dvh] w-[96dvw]`}>
         <MarkerDescriptionMobile
-          name={cluster.name}
+          place={cluster.place}
           setOpenedDescription={setOpenedDescription}
         />
       </DialogContent>

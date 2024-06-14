@@ -1,10 +1,43 @@
 export interface IMarkers {
-  id?: number
-  typeId: number
+  id: number
   name: string
+  short_description: string
   description: string
   latitude: number
   longitude: number
+  images: [
+    {
+      id: number
+      name: string
+      file: string
+    },
+  ]
+  rating: number
+  work_time: string
+  feedback_count: number
+  tags: [
+    {
+      id: number
+      name: string
+    },
+  ]
+}
+
+export interface IRoutes {
+  id: number
+  title: string
+  images: [
+    {
+      id: number
+      name: string
+      file: string
+    },
+  ]
+  short_description: string
+  distance: number
+  travel_time: string
+  feedback_count: number
+  rating: number
 }
 
 export interface ViewportType {

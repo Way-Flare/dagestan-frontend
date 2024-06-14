@@ -2,12 +2,13 @@ import { FC } from "react"
 import { markerDescriptionIcons } from "@shared/icons/icons"
 import randomPhoto from "@shared/img/random_photo_card.png"
 import likeIcon from "@shared/img/markerDescription/like_button.png"
+import { IRoutes } from "@shared/interface/IMarkers"
 
 type Props = {
-  name: string
+  route: IRoutes
 }
 
-export const RouteCard: FC<Props> = () => {
+export const RouteCard: FC<Props> = ({ route }) => {
   return (
     <div className="overflow-hidden md:basis-[23%] basis-[100%] relative">
       <div className="flex justify-end absolute gap-2 right-3 top-3">
@@ -20,16 +21,16 @@ export const RouteCard: FC<Props> = () => {
       <div className="py-2 px-3">
         <div className="flex justify-between items-center flex-nowrap">
           <div>
-            <span className="text-lg font-semibold">Дагестан – Москва</span>
+            <span className="text-lg font-semibold">{route.title}</span>
           </div>
           <div className="flex justify-center items-center">
             <img className="h-4 w-4 mr-1" src={markerDescriptionIcons.star} />
-            <div className="text-sm text-[#617398]">4.3</div>
+            <div className="text-sm text-[#617398]">{route.rating}</div>
           </div>
         </div>
         <div className="text-sm">
-          <span className="text-[#617398]">2,732 км</span>
-          <span className="text-[#617398]"> • 3д12ч</span>
+          <span className="text-[#617398]">{route.distance} км</span>
+          <span className="text-[#617398]"> • {route.travel_time}</span>
         </div>
       </div>
     </div>

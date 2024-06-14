@@ -1,12 +1,13 @@
 import { markerIcons } from "@shared/icons"
 import { FC } from "react"
 import heartIcon from "../img/heart.png"
+import { IMarkers } from "@shared/interface/IMarkers"
 
 type Props = {
-  name: string
+  place: IMarkers
 }
 
-export const MarkerUI: FC<Props> = ({ name }) => {
+export const MarkerUI: FC<Props> = ({ place }) => {
   return (
     <>
       {" "}
@@ -16,10 +17,12 @@ export const MarkerUI: FC<Props> = ({ name }) => {
         </div>
         <div className="flex flex-col items-start gap-0">
           <div className="flex justify-between items-center h-[16px]">
-            <div className="text-sm font-semibold ">{name}</div>
+            <div className="text-sm font-semibold ">{place.name}</div>
             <img className="h-[12px] w-[12px] ml-1" src={heartIcon} />
           </div>
-          <div className="text-xs text-[#617398] font-normal">До 21:00</div>
+          <div className="text-xs text-[#617398] font-normal">
+            {place.work_time}
+          </div>
         </div>
       </div>
       <div className="marker2"></div>
