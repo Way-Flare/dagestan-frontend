@@ -10,20 +10,20 @@ type Props = {
   setOpenedDescription: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const imagesMock = [
-  {
-    name: "1",
-    file: "https://www.russiadiscovery.ru/storage/orig/posts/1038/Kavkazskie_gory.jpg",
-  },
-  {
-    name: "2",
-    file: "https://www.russiadiscovery.ru/storage/orig/posts/1038/Altaiskie_gory.jpg",
-  },
-  {
-    name: "3",
-    file: "https://www.russiadiscovery.ru/storage/orig/posts/1038/Uralskie_gory.jpg",
-  },
-]
+// const imagesMock = [
+//   {
+//     name: "1",
+//     file: "https://www.russiadiscovery.ru/storage/orig/posts/1038/Kavkazskie_gory.jpg",
+//   },
+//   {
+//     name: "2",
+//     file: "https://www.russiadiscovery.ru/storage/orig/posts/1038/Altaiskie_gory.jpg",
+//   },
+//   {
+//     name: "3",
+//     file: "https://www.russiadiscovery.ru/storage/orig/posts/1038/Uralskie_gory.jpg",
+//   },
+// ]
 
 export const MarkerDescriptionMobile: FC<Props> = ({
   setOpenedDescription,
@@ -55,7 +55,7 @@ export const MarkerDescriptionMobile: FC<Props> = ({
         >
           <div>
             <SplideTrack>
-              {imagesMock.map((image, index) => (
+              {(place?.images ?? []).map((image, index) => (
                 <SplideSlide key={index} className="rounded-md">
                   <img
                     // className="h-[243px] w-[388px] object-cover object-center rounded-md bg-cover"
