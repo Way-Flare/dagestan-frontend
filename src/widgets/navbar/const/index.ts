@@ -19,7 +19,12 @@ export const navMobileItems = [
 ]
 
 export const navFilters = [
-  { icon: tree, label: "Природа", href: "#" },
-  { icon: fork, label: "Еда", href: "#" },
-  { icon: courthouse, label: "Достопримечательности", href: "#" },
+  { icon: tree, label: "Природа", href: "#", tag: "nature" },
+  { icon: fork, label: "Еда", href: "#", tag: "food" },
+  {
+    icon: courthouse,
+    label: "Достопримечательности",
+    href: "#",
+    tag: "landmark",
+  },
 ]

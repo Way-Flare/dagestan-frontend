@@ -8,6 +8,7 @@ import "./cluster-marker.scss"
 import { OneMarker } from "./one-marker"
 import { OneMarkerMobile } from "./one-marker-mobile"
 import { useAppSelector } from "@app/store/hooks"
+import { useFilterPlaces } from "@shared/hooks/use-filter-tags"
 
 type Props = {
   mapRef: React.MutableRefObject<undefined>
@@ -23,13 +24,15 @@ export const ClusterMarker: FC<Props> = ({
   setSelectedMarker,
 }) => {
   const { data: places } = useGetMarkersQuery()
+  const filteredPlaces = useFilterPlaces(places ?? [])
+
   const isDesktop = useAppSelector((state) => state.settings.isDesktop)
 
-  const points = (places ?? []).map((place) => ({
+  const points = (filteredPlaces ?? []).map((place) => ({
     type: "Feature",
     properties: { placeId: place.id, cluster: false },
-    description: place.description,
-    name: place.name,
+    description: place.short_description,
+    place,
     geometry: {
       type: "Point",
       coordinates: [place.longitude, place.latitude],

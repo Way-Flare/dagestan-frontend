@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "Mount",
+    "images": [
+      {
+        "id": 1,
+        "name": "first",
+        "file": "http://backend/1.jpg"
+      },
+      {
+        "id": 2,
+        "name": "second",
+        "file": "http://backend/2.jpg"
+      }
+    ],
+    "short_description": "This is first place",
+    "distance": 1000,
+    "travel_time": "1h",
+    "feedback_count": 1000,
+    "rating": 4.3
+  },
+  {
+    "id": 2,
+    "title": "Mount",
+    "images": [
+      {
+        "id": 1,
+        "name": "first",
+        "file": "http://backend/1.jpg"
+      },
+      {
+        "id": 2,
+        "name": "second",
+        "file": "http://backend/2.jpg"
+      }
+    ],
+    "short_description": "This is first place",
+    "distance": 1000,
+    "travel_time": "1h",
+    "feedback_count": 1000,
+    "rating": 4.3
+  }
+]

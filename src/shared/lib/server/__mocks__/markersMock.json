@@ -1,42 +1,61 @@
 [
   {
-    "id": 1,
-    "typeId": 1,
-    "name": "Глав рыба",
-    "description": "Главное управление по рыболовству и рыбопромышленности",
-    "latitude": 43.075292,
-    "longitude": 46.83533043
-  },
-  {
-    "id": 2,
-    "typeId": 2,
-    "name": "Сулакский каньон",
-    "description": "Каньон в долине реки Сулак",
-    "latitude": 43.0374789,
-    "longitude": 46.8058487
-  },
-  {
-    "id": 3,
-    "typeId": 3,
-    "name": "Озеро Мочох",
-    "description": "Озеро обвально-запрудного типа на реке Моджох",
-    "latitude": 42.628544,
-    "longitude": 46.623471
-  },
-  {
-    "id": 4,
-    "typeId": 4,
-    "name": "Маковое поле",
-    "description": "Один из самых захватывающих природных явлений",
-    "latitude": 43.07392,
-    "longitude": 47.16275
-  },
-  {
     "id": 5,
-    "typeId": 5,
-    "name": "Село Гуниб",
-    "description": "Село в Дагестане, находится в 150 км от Махачкалы на Гунибском плато",
-    "latitude": 42.386158,
-    "longitude": 46.962594
+    "longitude": 47.5076,
+    "latitude": 42.9764,
+    "name": "Музей горной живописи им. П. К. Гамзатова",
+    "short_description": "Музей искусств, культурное наследие Дагестана.",
+    "description": "Музей искусств, культурное наследие Дагестана.Музей искусств, культурное наследие Дагестана.Музей искусств, культурное наследие Дагестана.Музей искусств, культурное наследие Дагестана.",
+    "images": [
+      {
+        "name": "muzei_gornoy",
+        "file": "http://backend/media/app/place/gornyi3.jpg"
+      }
+    ],
+    "rating": 0,
+    "work_time": "10:00 - 18:00",
+    "tags": [
+      {
+        "id": 1,
+        "name": "nature"
+      },
+      {
+        "id": 3,
+        "name": "landmark"
+      }
+    ],
+    "feedback_count": 0
+  },
+  {
+    "id": 1,
+    "longitude": 43.016635,
+    "latitude": 46.831905,
+    "name": "Сулакский каньон",
+    "short_description": "",
+    "description": "Музей искусств, культурное наследие Дагестана.Музей искусств, культурное наследие Дагестана.Музей искусств, культурное наследие Дагестана.Музей искусств, культурное наследие Дагестана.",
+
+    "images": [
+      {
+        "name": "Sulak Canyon with boats",
+        "file": "http://backend/media/app/place/kanon.jpg"
+      },
+      {
+        "name": "Sulak Canyon",
+        "file": "http://backend/media/app/place/%D0%A1%D1%83%D0%BB%D0%B0%D0%BA%D1%81%D0%BA%D0%B8%D0%B9_%D0%BA%D0%B0%D0%BD%D1%8C%D0%BE%D0%BD.jpg"
+      },
+      {
+        "name": "",
+        "file": "http://backend/media/app/place/46d59338-b4d4-11ec-b491-aeb15f097ac2.800x600.jpeg"
+      }
+    ],
+    "rating": 0,
+    "work_time": "10:00 - 18:00",
+    "tags": [
+      {
+        "id": 1,
+        "name": "nature"
+      }
+    ],
+    "feedback_count": 0
   }
 ]

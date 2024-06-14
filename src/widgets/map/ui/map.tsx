@@ -2,9 +2,8 @@ import ReactMapGl, {
   GeolocateControl,
   Layer,
   NavigationControl,
-  Source,
 } from "react-map-gl"
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import "@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css"
 import { accessToken, ClusterMarker, mapStyleLight, style } from "@entities/map"
 import "./map.scss"
@@ -61,19 +60,19 @@ const buildings3DLayer = {
   },
 }
 
-const lineStyle = {
-  id: "roadLayer",
-  type: "line",
-  layout: {
-    "line-join": "round",
-    "line-cap": "round",
-  },
-  paint: {
-    "line-color": "blue",
-    "line-width": 4,
-    "line-opacity": 0.75,
-  },
-}
+// const lineStyle = {
+//   id: "roadLayer",
+//   type: "line",
+//   layout: {
+//     "line-join": "round",
+//     "line-cap": "round",
+//   },
+//   paint: {
+//     "line-color": "blue",
+//     "line-width": 4,
+//     "line-opacity": 0.75,
+//   },
+// }
 
 export const Map = () => {
   const showMap = useAppSelector(selectShowMap)
@@ -102,30 +101,30 @@ export const Map = () => {
     setViewport(viewport.viewState)
   }
 
-  const [coords, setCoords] = useState([])
+  // const [coords, setCoords] = useState([])
 
-  useEffect(() => {
-    const getData = async () => {
-      const geoJson = await fetch(
-        `https://api.mapbox.com/directions/v5/mapbox/driving-traffic/46.962594,42.386158;46.623471,42.628544?steps=true&geometries=geojson&overview=full&access_token=${accessToken}`,
-      )
-      const data = await geoJson.json()
-      const coords = data.routes[0].geometry.coordinates
-      setCoords(coords)
-    }
-    getData()
-    return
-  }, [])
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const geoJson = await fetch(
+  //       `https://api.mapbox.com/directions/v5/mapbox/driving-traffic/46.962594,42.386158;46.623471,42.628544?steps=true&geometries=geojson&overview=full&access_token=${accessToken}`,
+  //     )
+  //     const data = await geoJson.json()
+  //     const coords = data.routes[0].geometry.coordinates
+  //     setCoords(coords)
+  //   }
+  //   getData()
+  //   return
+  // }, [])
 
-  const geojson = {
-    type: "FeatureCollection",
-    features: [
-      {
-        type: "feature",
-        geometry: { type: "LineString", coordinates: coords },
-      },
-    ],
-  }
+  // const geojson = {
+  //   type: "FeatureCollection",
+  //   features: [
+  //     {
+  //       type: "feature",
+  //       geometry: { type: "LineString", coordinates: coords },
+  //     },
+  //   ],
+  // }
   return (
     <>
       <div>
@@ -159,7 +158,7 @@ export const Map = () => {
             setViewport={setViewport}
             setSelectedMarker={setSelectedMarker}
           />
-          <Source
+          {/* <Source
             id="routeSource"
             type="geojson"
             // @ts-ignore
@@ -169,7 +168,7 @@ export const Map = () => {
               // @ts-ignore
               <Layer {...lineStyle} />
             }
-          </Source>
+          </Source> */}
           {
             // @ts-ignore
             <Layer {...buildings3DLayer} />

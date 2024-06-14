@@ -1,4 +1,4 @@
-import { navFilters, navItems, navMobileItems } from "../const/"
+import { navItems, navMobileItems } from "../const/"
 import { Button } from "@shared/ui"
 import logo from "@shared/img/logo.png"
 import showlist from "@shared/img/showlist.png"
@@ -9,6 +9,7 @@ import { changeShowMap, selectShowMap, setDesktop } from "@shared/redux"
 import "./navbar.scss"
 import { useEffect } from "react"
 import DeviceDetector from "device-detector-js"
+import { NavFilters } from "./nav-filters"
 
 export const NavBar = () => {
   const { pathname } = useLocation()
@@ -22,7 +23,6 @@ export const NavBar = () => {
     const device = deviceDetector.parse(userAgent)
     const detectDesktop = device?.device?.type.includes("desktop")
     dispatch(setDesktop(Boolean(detectDesktop)))
-    alert(detectDesktop)
   }, [dispatch])
 
   return (
@@ -68,18 +68,7 @@ export const NavBar = () => {
         <div className="flex justify-center lg:justify-between items-center">
           <div className="hidden lg:block flex-1 h-8"></div>
           <div className="flex h-[32px] items-center justify-center gap-2 flex-2 overflow-x-auto scrollbar-hidden ml-2">
-            {navFilters.map((item, index) => (
-              <a key={index} href={item.href}>
-                <Button
-                  className=" bg-white h-[30px] w-auto rounded-md shadow-[0_1px_2px_0_#00103D14] flex justify-center items-center"
-                  variant="ghost"
-                  size="sm"
-                >
-                  <img className="h-[16px] w-[16px]" src={item.icon} />
-                  <div className="text-base px-1">{item.label}</div>
-                </Button>
-              </a>
-            ))}
+            <NavFilters />
           </div>
           <div className="hidden flex-1 lg:flex justify-end">
             {pathname === paths.MAIN && showMap ? (

@@ -4,7 +4,6 @@ import { IMarkers } from "@shared/interface/IMarkers"
 import { Button } from "@shared/ui"
 
 export const MapPopup: FC<IMarkers> = ({
-  typeId,
   longitude,
   latitude,
   description,
@@ -22,7 +21,7 @@ export const MapPopup: FC<IMarkers> = ({
 
   return isPopupVisible ? (
     <Popup
-      key={typeId}
+      key={"1"}
       longitude={longitude}
       latitude={latitude}
       onClose={closePopup}
