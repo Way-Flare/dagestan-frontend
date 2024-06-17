@@ -47,7 +47,6 @@ export const MarkerDescriptionFull: FC<Props> = ({ place }) => {
       </div>
       <div style={{ position: "relative" }}>
         <Splide
-          onPaginationUpdated={(e) => console.log(e)}
           options={{
             type: "loop",
             gap: "1rem",

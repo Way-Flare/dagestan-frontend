@@ -41,7 +41,6 @@ export const MarkerDescriptionMobile: FC<Props> = ({
         style={{ height: "174px", marginBottom: "70px", position: "relative" }}
       >
         <Splide
-          onPaginationUpdated={(e) => console.log(e)}
           options={{
             type: "loop",
             gap: "1rem",
