@@ -34,7 +34,7 @@ export default ({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
 
   const mockOn = process.env.MOCK
-  console.log(mode)
+  console.log("MODE >>>>>>>>>>>>>>>>>>>>>>>>>", mode)
 
   return defineConfig({
     plugins: [
@@ -43,10 +43,7 @@ export default ({ mode }) => {
       tsconfigPaths(),
       EnvironmentPlugin({
         MOCK: mockOn ? process.env.MOCK : "false",
-        API_HOST:
-          mode === "development"
-            ? process.env.VITE_API_DEV_HOST
-            : process.env.VITE_API_HOST,
+        API_HOST: mode === "development" ? process.env.VITE_API_DEV_HOST : "",
       }),
     ],
     css: {
