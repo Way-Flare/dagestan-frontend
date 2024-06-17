@@ -2,7 +2,7 @@ name: build, push, deploy and cleanup
 on: 
   push:
     branches: 
-      - "dev"
+      - "h/create-stable-tag"
 
 jobs:
   build_and_push:
@@ -19,11 +19,11 @@ jobs:
       - name: build and push
         run: |
           ${{ steps.vars.outputs.sha_short }}
-          docker build -t ${{ secrets.NEXUS_HOST }}/dagestanfront:latest -t ${{ secrets.NEXUS_HOST }}/dagestanfront:${{ github.run_number }} .
+          docker build -t ${{ secrets.NEXUS_HOST }}/dagestanfront:latest -t ${{ secrets.NEXUS_HOST }}/dagestanfront:stable-2 .
       - name: push docker image
         run: |
           docker push ${{ secrets.NEXUS_HOST }}/dagestanfront:latest
-          docker push ${{ secrets.NEXUS_HOST }}/dagestanfront:${{ github.run_number }}
+          docker push ${{ secrets.NEXUS_HOST }}/dagestanfront:stable-2
 
 
   deploy:
