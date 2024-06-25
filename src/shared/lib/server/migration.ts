@@ -17,16 +17,16 @@ export function startDatabaseMigration() {
   }
 
   const images = [
-    db.image.create({
-      id: 1,
-      name: "first",
-      file: "http://backend/1.jpg",
-    }),
-    db.image.create({
-      id: 2,
-      name: "second",
-      file: "http://backend/2.jpg",
-    }),
+    // db.image.create({
+    //   id: 1,
+    //   name: "first",
+    //   file: "http://backend/1.jpg",
+    // }),
+    // db.image.create({
+    //   id: 2,
+    //   name: "second",
+    //   file: "http://backend/2.jpg",
+    // }),
   ]
 
   placesMock.forEach((row) => db.place.create({ ...row, images }))

@@ -38,6 +38,13 @@ export const router = createBrowserRouter([
           return { Component: RoutesPage.default }
         },
       },
+      {
+        path: paths.PLACE_PAGE,
+        lazy: async () => {
+          const PlacePage = await import("@pages/PlacePage/PlacePage")
+          return { Component: PlacePage.default }
+        },
+      },
     ],
   },
 ])

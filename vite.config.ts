@@ -37,6 +37,7 @@ export default ({ mode }) => {
   console.log("MODE >>>>>>>>>>>>>>>>>>>>>>>>>", mode)
 
   return defineConfig({
+    publicDir: "/public",
     plugins: [
       react(),
       pwa,

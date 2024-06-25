@@ -1,6 +1,6 @@
 import { markerIcons } from "@shared/icons"
 import { FC } from "react"
-import heartIcon from "../img/heart.png"
+import heartIcon from "../img/heart.svg"
 import { IMarkers } from "@shared/interface/IMarkers"
 
 type Props = {

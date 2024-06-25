@@ -16,7 +16,14 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+    fontFamily: {
+      body: ["Manrope", "sans-serif"],
+    },
     extend: {
+      fontFamily: {
+        body: ["Manrope", "sans-serif"],
+      },
+
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
