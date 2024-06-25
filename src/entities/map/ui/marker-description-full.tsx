@@ -2,13 +2,12 @@ import { markerDescriptionIcons } from "@shared/icons/icons"
 import { FC } from "react"
 import { Separator } from "@shared/shadcn/components/ui/separator"
 import { DialogClose } from "@shared/shadcn/components/ui/dialog"
-import heartIcon from "@shared/img/heart_big.png"
+import heartIcon from "@shared/img/heart_big.svg"
 import { IMarkers } from "@shared/interface/IMarkers"
 import { useGetMarkerQuery } from "../api/map-markers-api"
 import { navFilters } from "@widgets/navbar/const"
-import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide"
-import "@splidejs/react-splide/css"
-import "./progress-bar.scss"
+import { SplideSlider } from "@shared/ui/SplideSlider"
+import { Link } from "react-router-dom"
 
 type Props = {
   place: IMarkers
@@ -37,46 +36,15 @@ export const MarkerDescriptionFull: FC<Props> = ({ place }) => {
 
   return (
     <div className="flex flex-col overflow-scroll scrollbar-hidden max-h-[90dvh]">
-      <div className="flex justify-between pb-2">
-        <a href="">
+      <div className="flex justify-between pb-2 sticky top-0 bg-white">
+        <Link to={`/place/${place.id}`}>
           <span className="text-[#0B5D1E]">Перейти на страницу места</span>
-        </a>
+        </Link>
         <DialogClose>
-          <img src={markerDescriptionIcons.closeButtonGreen} />
+          <img src={markerDescriptionIcons.closeButton} />
         </DialogClose>
       </div>
-      <div style={{ position: "relative" }}>
-        <Splide
-          options={{
-            type: "loop",
-            gap: "1rem",
-            cover: true,
-            autoplay: true,
-
-            pauseOnHover: false,
-            resetProgress: false,
-            height: "15rem",
-          }}
-          hasTrack={false}
-        >
-          <div>
-            <SplideTrack>
-              {(place?.images ?? []).map((image, index) => (
-                <SplideSlide key={index}>
-                  <img
-                    // className="h-[243px] w-[388px] object-cover object-center rounded-md bg-cover"
-                    src={image.file}
-                  />
-                </SplideSlide>
-              ))}
-            </SplideTrack>
-            <div className="splide__progress">
-              <div className="splide__progress__bar" />
-            </div>
-            <div className="splide__arrows"></div>
-          </div>
-        </Splide>
-      </div>
+      <SplideSlider height="243px" images={place?.images ?? []} />
       {/* <img
         className="h-[243px] w-[388px] object-cover object-center rounded-md bg-cover"
         src={randomPhotoFull}
@@ -85,11 +53,7 @@ export const MarkerDescriptionFull: FC<Props> = ({ place }) => {
         <div className="flex gap-2 flex-wrap">
           {namedTags.map((namedTag) => (
             <div key={namedTag?.tag} className="flex items-center">
-              <img
-                className="h-[16px] w-[16px] mr-1"
-                // src={markerDescriptionIcons.courthouseGrey}
-                src={namedTag?.icon}
-              />
+              <img className="h-[16px] w-[16px] mr-1" src={namedTag?.icon} />
               <span className="text-[#617398] text-sm">{namedTag?.label}</span>
             </div>
           ))}
@@ -120,10 +84,12 @@ export const MarkerDescriptionFull: FC<Props> = ({ place }) => {
             </div>
           </button>
           <button>
-            <img
-              className="h-[52px] w-[52px]"
-              src={markerDescriptionIcons.shareButton}
-            />
+            <div className="bg-[#0B5D1E] h-[52px] w-[52px] bg-opacity-10 rounded-xl flex items-center justify-center">
+              <img
+                className="h-[24px] w-[24px]"
+                src={markerDescriptionIcons.shareButton}
+              />
+            </div>
           </button>
         </div>
         <div className="py-3">

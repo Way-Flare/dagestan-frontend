@@ -1,13 +1,13 @@
-import { navItems, navMobileItems } from "../const/"
+import { locationsShowNavfilters, navItems, navMobileItems } from "../const/"
 import { Button } from "@shared/ui"
-import logo from "@shared/img/logo.png"
-import showlist from "@shared/img/showlist.png"
+import logo from "@shared/img/logo.svg"
+import showlist from "@shared/img/showlist.svg"
 import { Link, useLocation } from "react-router-dom"
 import { paths } from "@app/providers/path"
 import { useAppDispatch, useAppSelector } from "@app/store/hooks"
 import { changeShowMap, selectShowMap, setDesktop } from "@shared/redux"
 import "./navbar.scss"
-import { useEffect } from "react"
+import { useEffect, useMemo } from "react"
 import DeviceDetector from "device-detector-js"
 import { NavFilters } from "./nav-filters"
 
@@ -15,6 +15,12 @@ export const NavBar = () => {
   const { pathname } = useLocation()
   const showMap = useAppSelector(selectShowMap)
   const dispatch = useAppDispatch()
+  const location = useLocation()
+
+  const showNavFilters = useMemo(
+    () => locationsShowNavfilters.has(location.pathname),
+    [location.pathname],
+  )
   // const changeShowMapHandler = dispatch(changeShowMap())
 
   useEffect(() => {
@@ -45,7 +51,9 @@ export const NavBar = () => {
         <div className="hidden lg:flex justify-center lg:justify-between items-center py-2">
           <div className="flex items-center flex-shrink-0">
             <Link to="/">
-              <img className="w-20 h-16 mr-2" src={logo} alt="logo" />
+              <div className="bg-white rounded-xl w-[80px] h-[64px] flex justify-center items-center">
+                <img className="" src={logo} alt="logo" />
+              </div>
             </Link>
           </div>
           <div className="hidden lg:flex bg-white w-[290px] h-[64px] items-center justify-center rounded-2xl shadow-[0_1px_2px_0_#00103D14]">
@@ -65,35 +73,35 @@ export const NavBar = () => {
             <div className="bg-[#001C3D14] h-10 w-10 rounded-full"></div>
           </div>
         </div>
-        <div className="flex justify-center lg:justify-between items-center">
-          <div className="hidden lg:block flex-1 h-8"></div>
-          <div className="flex h-[32px] items-center justify-center gap-2 flex-2 overflow-x-auto scrollbar-hidden ml-2">
+        {showNavFilters && (
+          <div className="flex justify-center lg:justify-between items-center">
+            <div className="hidden lg:block flex-1 h-8"></div>
             <NavFilters />
+            <div className="hidden flex-1 lg:flex justify-end">
+              {pathname === paths.MAIN && showMap ? (
+                <Button
+                  className=" bg-white h-[30px] rounded-md shadow-[0_1px_2px_0_#00103D14] flex justify-between items-center"
+                  onClick={() => dispatch(changeShowMap())}
+                  variant="ghost"
+                  size="sm"
+                >
+                  <img className="h-[16px] w-[16px] mr-2" src={showlist} />
+                  <div className="text-sm font-semibold">Показать список</div>
+                </Button>
+              ) : pathname === paths.MAIN && !showMap ? (
+                <Button
+                  className=" bg-white h-[30px] rounded-md shadow-[0_1px_2px_0_#00103D14] flex justify-between items-center"
+                  onClick={() => dispatch(changeShowMap())}
+                  variant="ghost"
+                  size="sm"
+                >
+                  <img className="h-[16px] w-[16px] mr-2" src={showlist} />
+                  <div className="text-sm font-semibold">Показать карту</div>
+                </Button>
+              ) : null}
+            </div>
           </div>
-          <div className="hidden flex-1 lg:flex justify-end">
-            {pathname === paths.MAIN && showMap ? (
-              <Button
-                className=" bg-white h-[30px] rounded-md shadow-[0_1px_2px_0_#00103D14] flex justify-between items-center"
-                onClick={() => dispatch(changeShowMap())}
-                variant="ghost"
-                size="sm"
-              >
-                <img className="h-[16px] w-[16px] mr-2" src={showlist} />
-                <div className="text-sm font-semibold">Показать список</div>
-              </Button>
-            ) : pathname === paths.MAIN && !showMap ? (
-              <Button
-                className=" bg-white h-[30px] rounded-md shadow-[0_1px_2px_0_#00103D14] flex justify-between items-center"
-                onClick={() => dispatch(changeShowMap())}
-                variant="ghost"
-                size="sm"
-              >
-                <img className="h-[16px] w-[16px] mr-2" src={showlist} />
-                <div className="text-sm font-semibold">Показать карту</div>
-              </Button>
-            ) : null}
-          </div>
-        </div>
+        )}
       </div>
     </nav>
   )

@@ -1,0 +1,31 @@
+.meter { 
+    border-radius: 0.75rem;
+    height: 5px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.56);
+    overflow: hidden;
+}
+
+.meter div {
+    display: block;
+    height: 100%;
+    opacity: 100%;
+}
+
+.progress {
+    border-radius: 0.75rem;
+    opacity: 100% !important;
+    background-color: rgba(255,255,255,1);
+    animation: progressBar 4s;
+    animation-timing-function: linear;
+}
+
+.progress-completed {
+    opacity: 100%;
+    background-color: rgba(255,255,255,1);
+}
+
+@keyframes progressBar {
+  0% { width: 0; }
+  100% { width: 100%; }
+}

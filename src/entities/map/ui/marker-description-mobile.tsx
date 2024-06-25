@@ -1,9 +1,9 @@
 import { markerDescriptionIcons } from "@shared/icons/icons"
 import { FC } from "react"
-import likeIcon from "@shared/img/markerDescription/like_button.png"
-import closeIcon from "@shared/img/markerDescription/close_button.png"
+import likeIcon from "@shared/img/markerDescription/like_button.svg"
+import closeIcon from "@shared/img/markerDescription/close_button.svg"
 import { IMarkers } from "@shared/interface/IMarkers"
-import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide"
+import { SplideSlider } from "@shared/ui/SplideSlider"
 
 type Props = {
   place: IMarkers
@@ -40,35 +40,7 @@ export const MarkerDescriptionMobile: FC<Props> = ({
       <div
         style={{ height: "174px", marginBottom: "70px", position: "relative" }}
       >
-        <Splide
-          options={{
-            type: "loop",
-            gap: "1rem",
-            cover: true,
-            autoplay: true,
-            pauseOnHover: false,
-            resetProgress: false,
-            height: "15rem",
-          }}
-          hasTrack={false}
-        >
-          <div>
-            <SplideTrack>
-              {(place?.images ?? []).map((image, index) => (
-                <SplideSlide key={index} className="rounded-md">
-                  <img
-                    // className="h-[243px] w-[388px] object-cover object-center rounded-md bg-cover"
-                    src={image.file}
-                  />
-                </SplideSlide>
-              ))}
-            </SplideTrack>
-            <div className="splide__progress">
-              <div className="splide__progress__bar" />
-            </div>
-            <div className="splide__arrows"></div>
-          </div>
-        </Splide>
+        <SplideSlider images={place?.images ?? []} />
       </div>
       <div className="py-2 px-3">
         <div className="flex justify-between items-center flex-nowrap">

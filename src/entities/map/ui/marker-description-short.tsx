@@ -1,9 +1,8 @@
 import { markerDescriptionIcons } from "@shared/icons/icons"
 import { FC } from "react"
-import likeIcon from "@shared/img/markerDescription/like_button.png"
-import closeIcon from "@shared/img/markerDescription/close_button.png"
+import likeIcon from "@shared/img/markerDescription/like_button.svg"
 import { IMarkers } from "@shared/interface/IMarkers"
-import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide"
+import { SplideSlider } from "@shared/ui/SplideSlider"
 
 type Props = {
   place: IMarkers
@@ -25,52 +24,15 @@ type Props = {
 //   },
 // ]
 
-export const MarkerDescriptionShort: FC<Props> = ({
-  setOpenedShortDescription,
-  place,
-}) => {
+export const MarkerDescriptionShort: FC<Props> = ({ place }) => {
   return (
     <div className="overflow-hidden">
-      <div className="flex justify-end absolute gap-2 right-3 top-3">
-        <img className="h-9 w-9" src={likeIcon} />
-        <button onClick={() => setOpenedShortDescription(false)}>
-          <img className="h-9 w-9" src={closeIcon} />
-        </button>
+      <div className="flex justify-center items-center absolute gap-2 right-3 top-3 h-9 w-9 bg-black bg-opacity-50 rounded-xl">
+        <img className="h-4 w-4" src={likeIcon} />
       </div>
-      <div style={{ position: "relative" }}>
-        <Splide
-          options={{
-            type: "loop",
-            gap: "1rem",
-            cover: true,
-            autoplay: true,
-
-            pauseOnHover: false,
-            resetProgress: false,
-            height: "15rem",
-          }}
-          hasTrack={false}
-        >
-          <div>
-            <SplideTrack>
-              {(place?.images ?? []).map((image, index) => (
-                <SplideSlide key={index} className="rounded-md">
-                  <img
-                    // className="h-[243px] w-[388px] object-cover object-center rounded-md bg-cover"
-                    src={image.file}
-                  />
-                </SplideSlide>
-              ))}
-            </SplideTrack>
-            <div className="splide__progress">
-              <div className="splide__progress__bar" />
-            </div>
-            <div className="splide__arrows"></div>
-          </div>
-        </Splide>
-      </div>
+      <SplideSlider height="174px" images={place?.images ?? []} />
       <div className="py-2 px-3">
-        <div className="flex justify-between items-center flex-nowrap">
+        <div className="flex justify-between items-center flex-nowrap gap-2">
           <div>
             <span className="text-lg font-semibold">{place.name}</span>
           </div>

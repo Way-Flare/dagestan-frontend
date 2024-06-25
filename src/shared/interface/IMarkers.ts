@@ -1,5 +1,12 @@
 export interface IMarkers {
   id: number
+  contacts: [
+    {
+      id: number
+      phone_number: string
+      email: string
+    },
+  ]
   name: string
   short_description: string
   description: string
