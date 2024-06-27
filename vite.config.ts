@@ -34,6 +34,9 @@ export default ({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
 
   const mockOn = process.env.MOCK
+  const colorsPath = path
+    .resolve(__dirname, "src", "app", "style", "color.scss")
+    .replace(/\\/g, "/")
   console.log("MODE >>>>>>>>>>>>>>>>>>>>>>>>>", mode)
 
   return defineConfig({
@@ -50,10 +53,7 @@ export default ({ mode }) => {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@import "${path.resolve(
-            __dirname,
-            "./src/app/style/color.scss",
-          )}";`,
+          additionalData: `@import "${colorsPath}";`,
         },
       },
     },

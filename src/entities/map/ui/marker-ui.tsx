@@ -22,7 +22,7 @@ export const MarkerUI: FC<Props> = ({ place }) => {
         </div>
         <div className="flex flex-col items-start gap-0">
           <div className="flex justify-between items-center h-[16px]">
-            <div className="text-sm font-semibold text-ellipsis overflow-hidden whitespace-nowrap w-[190px]">
+            <div className="text-sm font-semibold text-ellipsis overflow-hidden whitespace-nowrap max-w-[190px]">
               {place.name}
             </div>
             <img className="h-[12px] w-[12px] ml-1" src={heartIcon} />
