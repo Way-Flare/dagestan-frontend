@@ -10,7 +10,7 @@ export const Places = () => {
 
   return (
     <Layout>
-      <div className="mx-auto p-4 py-12 flex flex-wrap gap-6 overflow-block scrollbar-hidden">
+      <div className="p-4 py-12 flex flex-wrap gap-5 overflow-block scrollbar-hidden ">
         {filteredPlaces?.map((place) => {
           return <PlaceCard key={place.id} place={place} />
         })}

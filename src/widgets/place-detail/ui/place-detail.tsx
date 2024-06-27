@@ -11,9 +11,9 @@ export const PlaceDetail = () => {
   const { data: place } = useGetMarkerQuery({ placeId: Number(placeId) })
 
   return (
-    <Layout>
+    <Layout px="32" flex={true}>
       {place && (
-        <div className="px-28 pt-12 flex flex-col overflow-block scrollbar-hidden">
+        <div className="pt-12 flex flex-col overflow-block scrollbar-hidden w-[1156px]">
           <PlaceHeader place={place} />
           <PlaceDescription place={place} />
           <PlaceContacts place={place} />

@@ -5,6 +5,7 @@ import { IMarkers } from "@shared/interface/IMarkers"
 import { navFilters } from "@widgets/navbar/const"
 import { SplideSlider } from "@shared/ui/SplideSlider"
 import randomImage from "@shared/img/random_photo_card.png"
+import imgNotAvailable from "@shared/img/img_nov_available.png"
 
 type Props = {
   place: IMarkers | undefined
@@ -35,10 +36,9 @@ export const PlaceHeader: FC<Props> = ({ place }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     setSliderHeight(ref.current?.offsetHeight ?? 0)
-  })
-
+  }, [ref, setSliderHeight])
   return (
-    <div className="flex justify-center gap-6">
+    <div className="flex justify-start gap-6 relative">
       <div className="w-[448px] bg-white rounded-2xl" ref={ref}>
         <div className="flex flex-col">
           <img className="h-[238px] rounded-t-lg mb-3" src={randomImage} />
@@ -98,18 +98,28 @@ export const PlaceHeader: FC<Props> = ({ place }) => {
           </div>
         </div>
       </div>
-      {ref?.current && (
-        <div className="relative w-[684px] rounded-2xl">
-          <SplideSlider
-            height={`${sliderHeight}px`}
-            images={place?.images ?? []}
-          >
-            <button className="absolute bg-white right-[16px] top-[16px] h-[36px] w-[164px] rounded-xl z-10 text-sm">
-              Смотреть все фото
-            </button>
-          </SplideSlider>
-        </div>
-      )}
+      <div className={`absolute right-4`}>
+        {(place?.images ?? []).length === 0 && Boolean(sliderHeight) ? (
+          <img
+            className={`w-[684px] object-cover rounded-xl`}
+            src={imgNotAvailable}
+            style={{ height: `${sliderHeight}px` }}
+          />
+        ) : (
+          ref?.current && (
+            <div className="relative w-[684px] rounded-2xl">
+              <SplideSlider
+                height={`${sliderHeight}px`}
+                images={place?.images ?? []}
+              >
+                <button className="absolute bg-white right-[16px] top-[16px] h-[36px] w-[164px] rounded-xl z-10 text-sm">
+                  Смотреть все фото
+                </button>
+              </SplideSlider>
+            </div>
+          )
+        )}
+      </div>
     </div>
   )
 }

@@ -35,8 +35,8 @@ export const MarkerDescriptionFull: FC<Props> = ({ place }) => {
   )
 
   return (
-    <div className="flex flex-col overflow-scroll scrollbar-hidden max-h-[90dvh]">
-      <div className="flex justify-between pb-2 sticky top-0 bg-white">
+    <div className="flex flex-col overflow-scroll scrollbar-hidden relative">
+      <div className="flex justify-between pb-2 sticky z-40 top-0 bg-white">
         <Link to={`/place/${place.id}`}>
           <span className="text-[#0B5D1E]">Перейти на страницу места</span>
         </Link>
@@ -44,7 +44,7 @@ export const MarkerDescriptionFull: FC<Props> = ({ place }) => {
           <img src={markerDescriptionIcons.closeButton} />
         </DialogClose>
       </div>
-      <SplideSlider height="243px" images={place?.images ?? []} />
+      <SplideSlider height="243px" images={place.images ?? []} />
       {/* <img
         className="h-[243px] w-[388px] object-cover object-center rounded-md bg-cover"
         src={randomPhotoFull}

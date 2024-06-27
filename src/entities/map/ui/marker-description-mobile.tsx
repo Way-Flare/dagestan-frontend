@@ -40,7 +40,7 @@ export const MarkerDescriptionMobile: FC<Props> = ({
       <div
         style={{ height: "174px", marginBottom: "70px", position: "relative" }}
       >
-        <SplideSlider images={place?.images ?? []} />
+        <SplideSlider height="174px" images={place?.images ?? []} />
       </div>
       <div className="py-2 px-3">
         <div className="flex justify-between items-center flex-nowrap">

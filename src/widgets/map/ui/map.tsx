@@ -84,7 +84,6 @@ export const Map = () => {
   if (marker) {
     console.log(dataMarker)
   }
-  console.log("API HOST E", process.env.API_HOST)
 
   const [viewport, setViewport] = useState<ViewportType>({
     latitude: 43,
