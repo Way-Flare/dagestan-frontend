@@ -8,7 +8,7 @@ export const Routes = () => {
 
   return (
     <Layout>
-      <div className="mx-auto p-4 py-12 flex flex-wrap gap-6 overflow-block scrollbar-hidden">
+      <div className="p-4 py-12 flex flex-wrap gap-5 overflow-block scrollbar-hidden">
         {routes?.map((route) => {
           return <RouteCard key={route.id} route={route} />
         })}

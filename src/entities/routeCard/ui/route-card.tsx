@@ -1,8 +1,9 @@
 import { FC } from "react"
 import { markerDescriptionIcons } from "@shared/icons/icons"
-import randomPhoto from "@shared/img/random_photo_card.png"
 import likeIcon from "@shared/img/markerDescription/like_button.svg"
 import { IRoutes } from "@shared/interface/IMarkers"
+import "./route-card.scss"
+import { SplideSlider } from "@shared/ui/SplideSlider"
 
 type Props = {
   route: IRoutes
@@ -10,13 +11,14 @@ type Props = {
 
 export const RouteCard: FC<Props> = ({ route }) => {
   return (
-    <div className="bg-white rounded-2xl  overflow-hidden md:basis-[23%] basis-[100%] relative">
+    <div className="bg-white rounded-2xl  overflow-hidden md:basis-[23%] basis-[100%] relative cad">
       <div className="flex justify-center items-center absolute gap-2 right-3 top-3 bg-black bg-opacity-50 rounded-xl h-9 w-9">
-        <img className="h-4 w-4" src={likeIcon} />
+        <img className="h-3 w-3" src={likeIcon} />
       </div>
-      <img
-        className="h-[174px] w-full object-cover object-center rounded-xl bg-cover"
-        src={randomPhoto}
+      <SplideSlider
+        height="174px"
+        images={route.images ?? []}
+        withAutoPlay={false}
       />
       <div className="py-2 px-3">
         <div className="flex justify-between items-center flex-nowrap">

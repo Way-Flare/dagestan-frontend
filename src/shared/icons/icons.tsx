@@ -12,9 +12,9 @@ import fork from "@shared/img/markerIcons/fork.svg"
 import tree from "@shared/img/markerIcons/tree.svg"
 
 export const markerIcons = {
-  courthouse,
-  fork,
-  tree,
+  landmark: courthouse,
+  food: fork,
+  nature: tree,
 }
 
 export const markerDescriptionIcons = {

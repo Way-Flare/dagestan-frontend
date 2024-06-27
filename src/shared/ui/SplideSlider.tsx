@@ -6,7 +6,8 @@ import imgNotAvailable from "@shared/img/img_nov_available.png"
 
 type Props = {
   children?: React.ReactNode
-  height?: string
+  height: string
+  withAutoPlay?: boolean
   images: {
     name: string
     file: string
@@ -15,8 +16,9 @@ type Props = {
 
 export const SplideSlider: FC<Props> = ({
   children,
-  height = "15rem",
+  height,
   images,
+  withAutoPlay = true,
 }) => {
   const [hoveredSlider, setHoveredSlider] = useState(false)
   const showProgress = useMemo(() => images.length > 1, [images.length])
@@ -25,8 +27,8 @@ export const SplideSlider: FC<Props> = ({
       images: images.map((_, i) => {
         if (i === 0) {
           return {
-            active: true,
-            completed: false,
+            active: withAutoPlay,
+            completed: !withAutoPlay,
           }
         }
         return {
@@ -35,7 +37,7 @@ export const SplideSlider: FC<Props> = ({
         }
       }),
     }),
-    [images],
+    [images, withAutoPlay],
   )
   const [imageStripes, setImageStripes] = useState(startStripes)
 
@@ -43,7 +45,8 @@ export const SplideSlider: FC<Props> = ({
     return (
       <div>
         <img
-          className={`h-[${height}] w-full object-cover`}
+          className={`w-full object-cover rounded-xl`}
+          style={{ height }}
           src={imgNotAvailable}
         />
       </div>
@@ -56,7 +59,9 @@ export const SplideSlider: FC<Props> = ({
       <Splide
         className="relative"
         onMove={(splide, newIndex, oldIndex) => {
-          splide.Components.Autoplay.play()
+          if (withAutoPlay) {
+            splide.Components.Autoplay.play()
+          }
           if (
             (oldIndex === images.length - 1 && newIndex === 0) ||
             (newIndex === images.length - 1 && oldIndex === 0)
@@ -73,8 +78,8 @@ export const SplideSlider: FC<Props> = ({
                     }
                   } else if (i === newIndex) {
                     return {
-                      active: true,
-                      completed: false,
+                      active: withAutoPlay,
+                      completed: !withAutoPlay,
                     }
                   }
                   return el
@@ -92,8 +97,8 @@ export const SplideSlider: FC<Props> = ({
                     }
                   } else if (i === newIndex) {
                     return {
-                      active: true,
-                      completed: false,
+                      active: withAutoPlay,
+                      completed: !withAutoPlay,
                     }
                   }
                   return el
@@ -106,7 +111,7 @@ export const SplideSlider: FC<Props> = ({
           type: "loop",
           gap: "1rem",
           cover: true,
-          autoplay: true,
+          autoplay: withAutoPlay,
           interval: 4000,
           pauseOnHover: false,
           resetProgress: true,
@@ -122,11 +127,9 @@ export const SplideSlider: FC<Props> = ({
                 key={`${index}${Math.random()}`}
                 className="rounded-md"
                 onMouseEnter={() => {
-                  console.log(hoveredSlider)
                   setHoveredSlider(true)
                 }}
                 onMouseLeave={() => {
-                  console.log(hoveredSlider)
                   setHoveredSlider(false)
                 }}
               >
