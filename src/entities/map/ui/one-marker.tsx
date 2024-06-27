@@ -64,7 +64,7 @@ export const OneMarker: FC<Props> = ({
             />
           </HoverCardContent>
 
-          <DialogContent className="left-[24px] bottom-[24px] h-[90vh] w-[440px]">
+          <DialogContent className="left-[24px] bottom-[24px] h-[85vh] w-[530px]">
             <MarkerDescriptionFull place={cluster.place} />
           </DialogContent>
         </HoverCard>
